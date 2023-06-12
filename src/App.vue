@@ -1,26 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-app :theme="globalStore.tema">
+        <router-view />
+    </v-app>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { useGlobalStore } from "./stores/GlobalStore";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const globalStore = useGlobalStore()
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.v-application__wrap {
+    flex: 0 0 auto;
+}
+
+.v-row{
+    flex: 0 0 auto;
+    margin: 0;
 }
 </style>
