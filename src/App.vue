@@ -15,6 +15,10 @@ const globalStore = useGlobalStore()
     flex: 0 0 auto;
 }
 
+.v-application{
+    display: block !important;
+}
+
 .v-row{
     flex: 0 0 auto;
     margin: 0;

@@ -1,6 +1,10 @@
 <template>
     <top-bar />
     <side-bar />
+
+    <v-main>
+        <router-view />
+    </v-main>
 </template>
 
 <script setup>

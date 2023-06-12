@@ -7,6 +7,14 @@ const routes = [
         name: 'menu',
         component: () => import('@/Views/Menu/MenuPage.vue'),
         meta: { requiresAuth: true },
+        children: [
+            {
+                path: '/incial',
+                name: 'home',
+                component: () => import('@/Views/Home/HomePage.vue'),
+                meta: { requireAuth: true },
+            }
+        ]
     },
 ];
 
