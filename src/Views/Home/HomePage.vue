@@ -6,10 +6,12 @@
         <v-divider />
         <mid-page />
     </v-container>
+    <footer-page class="mt-6"/>
 </template>
 
 <script setup>
 import midPage from './Partials/MidPage.vue'
+import footerPage from './Partials/footerPage.vue';
 
 const itens = [
     {
