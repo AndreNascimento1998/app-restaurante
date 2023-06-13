@@ -5,19 +5,19 @@
                 <v-img src="https://static.vecteezy.com/system/resources/previews/014/971/638/non_2x/food-logo-design-template-restaurant-free-png.png" height="90"/>
             </v-toolbar-title>
         </v-col>
-        <h2 class="titulo-cor">Food Chaing Magnate</h2>
+        <section class="titulo-cor">Food Chain Magnate</section>
         <v-spacer />
         
         <v-menu left bottom>
             <template #activator="{ props }">
                 <v-btn icon v-bind="props">
-                    <v-icon class="titulo-cor" size="35px">mdi-account-circle</v-icon>
+                    <v-icon class="cor-texto" size="35px">mdi-account-circle</v-icon>
                 </v-btn>
             </template>
 
             <v-list>
                 <v-list-item v-for="(option, i) in options" :key="i" @click="option.action">
-                    <v-list-item-title class="titulo-cor">{{ option.text }}</v-list-item-title>
+                    <v-list-item-title class="cor-texto">{{ option.text }}</v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-menu>
@@ -42,8 +42,15 @@ const options = ref([
 
 </script>
 
-<style scepd>
+<style scoped>
 .titulo-cor{
+    color: #e89837;
+    font-size: 26px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.cor-texto {
     color: #e89837;
 }
 </style>

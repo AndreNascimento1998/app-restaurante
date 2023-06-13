@@ -9,7 +9,7 @@ const routes = [
         meta: { requiresAuth: true },
         children: [
             {
-                path: '/incial',
+                path: '/inicial',
                 name: 'home',
                 component: () => import('@/Views/Home/HomePage.vue'),
                 meta: { requireAuth: true },
