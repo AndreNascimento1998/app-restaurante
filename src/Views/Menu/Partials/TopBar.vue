@@ -45,8 +45,7 @@ const options = ref([
 <style scoped>
 .titulo-cor{
     color: #e89837;
-    font-size: 26px;
-    font-style: italic;
+    font-size: 24px;
     font-weight: 700;
 }
 

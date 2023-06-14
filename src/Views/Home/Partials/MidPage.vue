@@ -38,9 +38,9 @@
 
     <v-divider class="mt-2" />
 
-    <v-row class="pa-4">
+    <v-row class="mt-6 pa-4">
         <v-col cols="12">
-            <h1 class="letra">Pratos de Lançamentos</h1>
+            <h2 style="font-style: italic;" class="letra">Lançamentos</h2>
         </v-col>
         <v-col v-for="(prato, index) in pratos" :key="index" cols="3">
 
@@ -69,35 +69,47 @@
             </v-hover>
         </v-col>
     </v-row>
-    
+
+    <v-row class="mt-6 pa-4">
+        <v-col cols="12">
+            <h2 style="font-style: italic;" class="letra">Depoimentos</h2>
+        </v-col>
+
+        <v-col v-for="(item, index) in depoimentos" :key="index"  cols="3">
+        <v-card class="d-flex flex-column align-center justify-center">
+                <v-avatar class="pa-1" size="80">
+                    <img :src="item.url"
+                        alt="Foto da pessoa" 
+                        class=""
+                        style="object-fit: cover; width: 100%; height: 100%; ali"
+                    />
+                </v-avatar>
+                <v-card-title class="text-center">
+                    {{ item.nome }}
+                </v-card-title>
+                <v-card-text>
+                    <p>
+                      {{ item.descricao }}
+                    </p>
+                </v-card-text>
+            </v-card>
+        </v-col>
+
+    </v-row>
 </template>
 
 <script setup>
+import { useHomeStore } from '@/stores/HomeStore';
+import { computed } from 'vue';
 
-const pratos = [
-    {
-        nome: 'Yakisoba',
-        src: "https://s2.glbimg.com/sbY-7k1GbROb56FDTqj9XAEzIDQ=/e.glbimg.com/og/ed/f/original/2021/07/22/yakisoba.jpeg"
-    },
-    {
-        nome: 'Lamén',
-        src: "https://segredosdomundo.r7.com/wp-content/uploads/2020/02/lamen-tudo-sobre-essa-maravilha-gastronomica.jpg"
-    },
-    {
-        nome: 'Strogonoffe',
-        src: "https://receitinhas.com.br/wp-content/uploads/2016/06/istock-1313903223.webp"
-    },
-    {
-        nome: 'Carne ao Molho Madeira',
-        src: "https://blog.cybercook.com.br/wp-content/uploads/2022/07/molho-madeira-legitimo-para-harmonizar-com-o-vinho-certo-scaled.jpeg"
-    }
-]
+const homeStore = useHomeStore()
+
+const pratos = computed(() => homeStore.pratos)
+const depoimentos = computed(() => homeStore.depoimentos)
+
 </script>
 
 <style scoped>
-
-
-
 .letra {
     color: #da7b08;
 }
@@ -106,15 +118,16 @@ const pratos = [
     color: #000000;
 }
 
-.pointer{
+.pointer {
     cursor: pointer;
 }
+
 .v-card--reveal {
-align-items: center;
-bottom: 8;
-justify-content: center;
-opacity: .8;
-position: absolute;
-width: 100%;
+    align-items: center;
+    bottom: 8;
+    justify-content: center;
+    opacity: .8;
+    position: absolute;
+    width: 100%;
 }
 </style>
