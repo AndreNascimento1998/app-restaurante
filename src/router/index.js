@@ -9,10 +9,15 @@ const routes = [
         meta: { requiresAuth: true },
         children: [
             {
-                path: '/inicial',
+                path: '/inicio',
                 name: 'home',
                 component: () => import('@/Views/Home/HomePage.vue'),
                 meta: { requireAuth: true },
+            },
+            {
+                path: '/cardapio',
+                name: 'cardapio',
+                component: () => import('@/Views/Cardapio/CardapioPage.vue')
             }
         ]
     },
