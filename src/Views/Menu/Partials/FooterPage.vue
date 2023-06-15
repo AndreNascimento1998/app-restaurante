@@ -1,7 +1,7 @@
 
 <template>
-    <v-footer class="d-flex flex-column">
-        <div class="bg-color d-flex w-100 align-center px-4 pa-2">
+    <v-footer class=" flex-column">
+        <div class="bg-color d-flex w-100 align-center px-16 pa-2">
             <strong>Mantenha-se conectado com nossas redes sociais!</strong>
 
             <v-spacer />
@@ -10,7 +10,7 @@
         </div>
 
         <div class="pa-4 bg-black w-100 cor-texto">
-            <v-row class="pa-4">
+            <v-row class="pa-4 ml-16">
                 <v-col offset="2" cols="2">
                     <h4 class="curso">Food Chain Magnate</h4>
                     <p class=" curso">O Chef</p>
@@ -32,10 +32,10 @@
                     <h4>Promoções</h4>
                 </v-col>
             </v-row>
-            <v-col cols="12">
+            <v-col cols="12 ml-6 px-16">
                 <v-divider />
             </v-col>
-            <h4 class="pa-1 ml-2">Copyright © 2022 Food Chain Magnate - Todos os direitos reservados</h4>
+            <h4 class="pa-1 px-16 ml-6">Copyright © 2022 Food Chain Magnate - Todos os direitos reservados</h4>
         </div>
     </v-footer>
 </template>
@@ -76,5 +76,9 @@ const icons = [
 
 .curso {
     cursor: pointer !important;
+}
+
+.v-footer[data-v-5b0e8fde] {
+    overflow: hidden !important;
 }
 </style>
