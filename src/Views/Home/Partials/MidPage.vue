@@ -77,10 +77,10 @@
 
         <v-col v-for="(item, index) in depoimentos" :key="index"  cols="3">
         <v-card class="d-flex flex-column align-center justify-center">
-                <v-avatar class="pa-1" size="80">
+                <v-avatar class="pa-1" size="50%">
                     <img :src="item.url"
                         alt="Foto da pessoa" 
-                        
+                        class="depoimento-img"
                     />
                 </v-avatar>
                 <v-card-title class="text-center">
@@ -129,4 +129,10 @@ const depoimentos = computed(() => homeStore.depoimentos)
     position: absolute;
     width: 100%;
 }
+
+.depoimento-img {
+    object-fit: cover;
+    max-width: 80%;
+}
+
 </style>

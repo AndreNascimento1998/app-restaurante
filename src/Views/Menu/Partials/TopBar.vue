@@ -6,8 +6,12 @@
             </v-toolbar-title>
         </v-col>
         <section class="titulo-cor">Food Chain Magnate</section>
-        <v-spacer />
         
+        <v-spacer />
+        <span>
+            <v-icon class="cor-texto" size="35px">mdi-shopping</v-icon>
+        </span>
+        <span class="carrinho-letra margin-direita">R$ {{ precoCarrinho.toFixed(2) }} <p>itens: {{ carrinhoComprasStore.carrinhoDeCompras.length }}</p></span>
         <v-menu left bottom>
             <template #activator="{ props }">
                 <v-btn icon v-bind="props">
@@ -25,10 +29,14 @@
 </template>
 
 <script setup>
+import { useCarrinhoCompras } from "@/stores/CarrinhoCompras";
 import { useGlobalStore } from "@/stores/GlobalStore";
-import { ref } from "vue";
+import {  computed, ref } from "vue";
 
 const globalStore = useGlobalStore()
+const carrinhoComprasStore = useCarrinhoCompras()
+
+const precoCarrinho = computed(() => carrinhoComprasStore.precoStore)
 
 const options = ref([
     { text: 'Perfil', action: () => alert('Oi') },
@@ -51,5 +59,17 @@ const options = ref([
 
 .cor-texto {
     color: #e89837;
+}
+
+.margin-direita {
+    margin-right: 100px;
+}
+
+.margin-top{
+    margin-top: 30px !important;
+}
+
+.carrinho-letra {
+    font-size: 12px;
 }
 </style>

@@ -29,10 +29,10 @@
                                 <v-icon>mdi-plus</v-icon>
                             </v-btn>
                         </v-card>
-                        <v-btn class="letra" variant="text" @click="cancel">
+                        <v-btn class="letra" variant="text" @click="cancelar">
                             Cancelar
                         </v-btn>
-                        <v-btn class="letra" variant="text" @click="dialog = false">
+                        <v-btn class="letra" variant="text" @click="adicionar">
                             Adicionar
                         </v-btn>
                     </v-card-actions>
@@ -43,9 +43,11 @@
 </template>
 
 <script setup>
+import { useCarrinhoCompras } from "@/stores/CarrinhoCompras";
 import { computed, ref } from "vue";
 import { defineProps } from 'vue';
 
+const carrinhoComprasStore = useCarrinhoCompras()
 let dialog = ref(false)
 let contadorPorcao = ref(1)
 
@@ -59,13 +61,32 @@ const props = defineProps({
 
 const valorModal = computed(() => props.valor * contadorPorcao.value)
 
-function cancel() {
+function adicionar() {
+    let total = 0
+    for (let c = 0; c < contadorPorcao.value ; c++){
+        carrinhoComprasStore.carrinhoDeCompras.push({
+            id: props.id,
+            nome: props.nome,
+            valor: props.valor
+        })
+    }
+
+    carrinhoComprasStore.carrinhoDeCompras.forEach(item => {
+        total += item.valor
+    });
+
+    carrinhoComprasStore.precoStore = total 
+    contadorPorcao.value = 1
+    dialog.value = false
+}
+
+function cancelar() {
     contadorPorcao.value = 1
     dialog.value = false
 }
 
 function contadorMenos() {
-    if(contadorPorcao.value > 0){
+    if(contadorPorcao.value > 1){
         contadorPorcao.value -= 1
     }
 }
