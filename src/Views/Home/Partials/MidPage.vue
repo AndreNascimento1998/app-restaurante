@@ -80,8 +80,7 @@
                 <v-avatar class="pa-1" size="80">
                     <img :src="item.url"
                         alt="Foto da pessoa" 
-                        class=""
-                        style="object-fit: cover; width: 100%; height: 100%; ali"
+                        
                     />
                 </v-avatar>
                 <v-card-title class="text-center">
