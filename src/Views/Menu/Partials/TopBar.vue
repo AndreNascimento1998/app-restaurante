@@ -21,7 +21,7 @@
 
             <v-list>
                 <v-list-item v-for="(option, i) in options" :key="i" @click="option.action">
-                    <v-list-item-title class="cor-texto">{{ option.text }}</v-list-item-title>
+                    <v-list-item-title class="cor-texto"><v-icon > {{ option.icon }} </v-icon>  {{ option.text }}</v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-menu>
@@ -39,13 +39,24 @@ const carrinhoComprasStore = useCarrinhoCompras()
 const precoCarrinho = computed(() => carrinhoComprasStore.precoStore)
 
 const options = ref([
-    { text: 'Perfil', action: () => alert('Oi') },
-    {text: 'Editar Perfil', action: () => alert('Oi')},
+    { 
+        text: 'Perfil', 
+        icon: 'mdi-account',
+        action: () => alert('Oi') },
+    {
+        text: 'Editar Perfil', 
+        icon: 'mdi-pencil',
+        action: () => alert('Oi')},
     { 
         text: 'Trocar Tema', 
+        icon: 'mdi-theme-light-dark',
         action: () => globalStore.trocaTema() 
     },
-    { text: 'Sair', action: () => alert('Oi') },
+    { 
+        text: 'Sair', 
+        icon: 'mdi-logout',
+        action: () => alert('Oi') 
+    },
 ])
 
 </script>
@@ -62,7 +73,7 @@ const options = ref([
 }
 
 .margin-direita {
-    margin-right: 100px;
+    margin-right: 50px;
 }
 
 .margin-top{
