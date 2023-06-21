@@ -9,13 +9,13 @@
         
         <v-spacer />
         <span>
-            <v-icon class="cor-texto" size="35px">mdi-shopping</v-icon>
+            <v-icon class="cor-texto cursor" size="35px">mdi-shopping</v-icon>
         </span>
-        <span class="carrinho-letra margin-direita">R$ {{ precoCarrinho.toFixed(2) }} <p>itens: {{ carrinhoComprasStore.carrinhoDeCompras.length }}</p></span>
+        <span class="carrinho-letra margin-direita">R$ {{ precoCarrinho.toFixed(2) }} <p>itens: {{ itenQnt }}</p></span>
         <v-menu left bottom>
             <template #activator="{ props }">
                 <v-btn icon v-bind="props">
-                    <v-icon class="cor-texto" size="35px">mdi-account-circle</v-icon>
+                    <v-icon class="cor-texto " size="35px">mdi-account-circle</v-icon>
                 </v-btn>
             </template>
 
@@ -37,6 +37,7 @@ const globalStore = useGlobalStore()
 const carrinhoComprasStore = useCarrinhoCompras()
 
 const precoCarrinho = computed(() => carrinhoComprasStore.precoStore)
+const itenQnt = computed(() => carrinhoComprasStore.itensQnt)
 
 const options = ref([
     { 
@@ -62,6 +63,10 @@ const options = ref([
 </script>
 
 <style scoped>
+.cursor {
+    cursor: pointer;
+}
+
 .titulo-cor{
     color: #e89837;
     font-size: 24px;
