@@ -12,7 +12,7 @@ export const useHomeStore = defineStore('home', () => {
             src: "https://segredosdomundo.r7.com/wp-content/uploads/2020/02/lamen-tudo-sobre-essa-maravilha-gastronomica.jpg"
         },
         {
-            nome: 'Strogonoffe',
+            nome: 'Strogonofe',
             src: "https://receitinhas.com.br/wp-content/uploads/2016/06/istock-1313903223.webp"
         },
         {
