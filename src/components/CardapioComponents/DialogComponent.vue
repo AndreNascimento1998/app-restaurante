@@ -56,26 +56,35 @@ const props = defineProps({
     src: String,
     descricao: String,
     id: Number,
-    valor: Number
+    valor: Number,
 })
 
 const valorModal = computed(() => props.valor * contadorPorcao.value)
 
 function adicionar() {
     let total = 0
-    for (let c = 0; c < contadorPorcao.value ; c++){
-        carrinhoComprasStore.carrinhoDeCompras.push({
-            id: props.id,
-            nome: props.nome,
-            valor: props.valor
-        })
-    }
+    let totalItens = 0
 
+    const itemAtual = carrinhoComprasStore.carrinhoDeCompras.find( item => item.nome === props.nome)
+    
+    if(itemAtual === undefined){
+    carrinhoComprasStore.carrinhoDeCompras.push({
+        id: props.id,
+        nome: props.nome,
+        valor: props.valor,
+        qnt: contadorPorcao.value
+    })} else{
+        const index = carrinhoComprasStore.carrinhoDeCompras.findIndex ( item => item.nome === props.nome)
+        carrinhoComprasStore.carrinhoDeCompras[index].qnt += contadorPorcao.value
+    }
+    
     carrinhoComprasStore.carrinhoDeCompras.forEach(item => {
-        total += item.valor
+        total += item.valor * item.qnt
+        totalItens += item.qnt
     });
 
-    carrinhoComprasStore.precoStore = total 
+    carrinhoComprasStore.precoStore = total
+    carrinhoComprasStore.itensQnt = totalItens
     contadorPorcao.value = 1
     dialog.value = false
 }
@@ -90,6 +99,8 @@ function contadorMenos() {
         contadorPorcao.value -= 1
     }
 }
+
+
 </script>
 
 <style scoped>
