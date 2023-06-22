@@ -9,7 +9,7 @@
         
         <v-spacer />
         <span>
-            <v-icon class="cor-texto cursor" size="35px">mdi-shopping</v-icon>
+            <v-icon class="cor-texto cursor" size="35px" @click="(() => router.push('/carrinho'))">mdi-shopping</v-icon>
         </span>
         <span class="carrinho-letra margin-direita">R$ {{ precoCarrinho.toFixed(2) }} <p>itens: {{ itenQnt }}</p></span>
         <v-menu left bottom>
@@ -29,6 +29,7 @@
 </template>
 
 <script setup>
+import router from "@/router";
 import { useCarrinhoCompras } from "@/stores/CarrinhoCompras";
 import { useGlobalStore } from "@/stores/GlobalStore";
 import {  computed, ref } from "vue";

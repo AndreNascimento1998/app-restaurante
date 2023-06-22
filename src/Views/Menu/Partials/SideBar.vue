@@ -24,7 +24,7 @@ const menuItems = [
     { title: 'Início', icon: 'mdi-home', action: () => router.push('/inicio') },
     { title: 'Cardápio', icon: 'mdi-food',  action: () => router.push('/cardapio')},
     { title: 'Promoções', icon: 'mdi-tag', action: ()   => router.push('/cardapio/promocao') },
-    { title: 'Carrinho de Compras', icon: 'mdi-cart-check' },
+    { title: 'Carrinho de Compras', icon: 'mdi-cart-check', action: () => router.push('/carrinho') },
     { title: 'Configurações', icon: 'mdi-cog' },
 ]
 </script>
