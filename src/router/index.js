@@ -24,6 +24,11 @@ const routes = [
                 name: 'cardapioComNome',
                 component: () => import('@/Views/Cardapio/CardapioPage.vue')
             },
+            {
+                path: '/carrinho',
+                name: 'carrinho',
+                component: () => import('@/Views/Carrinho/CarrinhoPage.vue')
+            }
         ]
     },
 ];
