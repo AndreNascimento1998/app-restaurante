@@ -8,8 +8,8 @@
 import { useGlobalStore } from "./stores/GlobalStore";
 import "@/assets/fonts.css";
 
-
 const globalStore = useGlobalStore()
+
 </script>
 
 <style>

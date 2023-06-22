@@ -7,7 +7,7 @@ export const useCardapioStore = defineStore('cardapio', () => {
             id: 100, 
             name: '3 LANCHES + 3 FRITAS 90G + 1 guaraná litro',
             url: 'https://casaeconstrucao.org/wp-content/uploads/2021/03/0-inspiracoes-para-combos-de-lanches.jpg',
-            descricao: 'Comodia joaponesaaaa',
+            descricao: 'Desfrute de um combo irresistível composto por 3 lanches deliciosos, 3 porções de fritas crocantes de 90g e um refrescante guaraná de 1 litro. ',
             valor: 99.00,
             qnt: 0  
         },
@@ -15,7 +15,7 @@ export const useCardapioStore = defineStore('cardapio', () => {
             id: 101, 
             name: '1 HAMBURGUER + 1 FRITAS 120G',
             url: 'https://liveseo-app.s3.sa-east-1.amazonaws.com/P11226/UR/465_5.jpg',
-            descricao: 'Comodia joaponesaaaa',
+            descricao: 'Delicie-se com um combo delicioso que inclui um suculento hambúrguer acompanhado por uma porção generosa de fritas crocantes de 120g. ',
             valor: 48.50,
             qnt: 0       
         },
@@ -23,7 +23,7 @@ export const useCardapioStore = defineStore('cardapio', () => {
             id: 102, 
             name: '2 HAMBURGUER + 1 FRITAS 100G + REFRIGERANTE 500 ML',
             url: 'https://aaronturatv.ig.com.br/wp-content/uploads/2023/04/combo-burger-king-bk.jpg',
-            descricao: 'Comodia joaponesaaaa',
+            descricao: 'Aproveite um combo incrível composto por dois suculentos hambúrgueres, uma porção de fritas crocantes de 100g e um refrigerante refrescante de 500 ml.',
             valor: 73.00,
             qnt: 0       
         },
@@ -31,7 +31,7 @@ export const useCardapioStore = defineStore('cardapio', () => {
             id: 103, 
             name: '2 HAMBURGUER',
             url: 'https://liveseo-app.s3.sa-east-1.amazonaws.com/P11226/UR/860_3.jpg',
-            descricao: 'Comodia joaponesaaaa',
+            descricao: 'Desfrute de um combo suculento que inclui dois hambúrgueres deliciosos. Cada hambúrguer é cuidadosamente preparado, com ingredientes frescos e sabores irresistíveis. ',
             valor: 55.00,
             qnt: 0  
         },

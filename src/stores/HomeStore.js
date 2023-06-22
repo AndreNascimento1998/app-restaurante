@@ -8,7 +8,7 @@ export const useHomeStore = defineStore('home', () => {
             src: "https://s2.glbimg.com/sbY-7k1GbROb56FDTqj9XAEzIDQ=/e.glbimg.com/og/ed/f/original/2021/07/22/yakisoba.jpeg"
         },
         {
-            nome: 'Lamén',
+            nome: 'Lámen',
             src: "https://segredosdomundo.r7.com/wp-content/uploads/2020/02/lamen-tudo-sobre-essa-maravilha-gastronomica.jpg"
         },
         {
