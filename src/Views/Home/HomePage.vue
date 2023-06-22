@@ -16,7 +16,7 @@
 
 <script setup>
 import midPage from './Partials/MidPage.vue'
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const itens = ref([
     {
@@ -40,6 +40,10 @@ const itens = ref([
         url: 'https://pictogrammers.com/library/mdi/'
     },
 ])
+
+onMounted(() => {
+    window.scrollTo(0, 0)
+})
 
 function rota(item) {
     if(item.url){

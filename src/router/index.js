@@ -18,6 +18,11 @@ const routes = [
                 path: '/cardapio',
                 name: 'cardapio',
                 component: () => import('@/Views/Cardapio/CardapioPage.vue')
+            },
+            {
+                path: '/cardapio/:nome',
+                name: 'cardapioComNome',
+                component: () => import('@/Views/Cardapio/CardapioPage.vue')
             }
         ]
     },

@@ -1,7 +1,7 @@
 <template>
     <v-row class="text-center mt-10">
         <v-col cols="6">
-            <v-card density="compact" class="mx-auto" max-width="550">
+            <v-card density="compact" class="mx-auto" max-width="650">
                 <v-img class="align-end text-white" height="300"
                     src="https://images.pexels.com/photos/6127316/pexels-photo-6127316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     cover>
@@ -18,7 +18,7 @@
             </v-card>
         </v-col>
         <v-col cols="6">
-            <v-card density="compact" class="mx-auto" max-width="550">
+            <v-card density="compact" class="mx-auto" max-width="650">
                 <v-img class="align-end text-white" height="300"
                     src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     cover>
@@ -28,7 +28,7 @@
                 </v-card-text>
 
                 <v-card-actions>
-                    <v-btn block variant="outlined" class="letra">
+                    <v-btn @click="(() => router.push('/cardapio'))" block variant="outlined" class="letra">
                         Faça seu pedido
                     </v-btn>
                 </v-card-actions>
@@ -59,7 +59,7 @@
 
                                     </v-col>
                                     <v-col cols="6" offset="5">
-                                        <v-icon class="pointer" size="40px">mdi-plus-circle-outline</v-icon>
+                                        <v-icon class="pointer" @click="paginaCardapio(prato)" size="40px">mdi-plus-circle-outline</v-icon>
                                     </v-col>
                                 </v-row>
                             </div>
@@ -99,13 +99,18 @@
 </template>
 
 <script setup>
+import router from '@/router';
 import { useHomeStore } from '@/stores/HomeStore';
 import { computed } from 'vue';
 
-const homeStore = useHomeStore()
 
+const homeStore = useHomeStore()
 const pratos = computed(() => homeStore.pratos)
 const depoimentos = computed(() => homeStore.depoimentos)
+
+function paginaCardapio(item) {
+    router.push(`/cardapio/${item.nome}`)
+}
 
 </script>
 
