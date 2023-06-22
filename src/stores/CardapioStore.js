@@ -2,6 +2,66 @@ import { defineStore } from "pinia";
 import { reactive } from "vue";
 
 export const useCardapioStore = defineStore('cardapio', () => {
+
+    const promocao = reactive([
+        {
+            id: 200, 
+            name: 'Panqueca',
+            url: 'https://static.itdg.com.br/images/1200-630/fe99f60e599810d8f12b3d21edd2be6f/319710-original.jpg',
+            descricao: 'As panquecas são um prato clássico e versátil que consiste em finas e macias massas feitas a partir de uma mistura de farinha, ovos, leite e outros ingredientes.',
+            valor: 6.00,
+            qnt: 0  
+        },
+        {
+            id: 201, 
+            name: 'Americano',
+            url: 'https://amopaocaseiro.com.br/wp-content/uploads/2021/01/receita-joelho-ou-enroladinho.jpg',
+            descricao: 'O americano salgadinho é um clássico petisco crocante e saboroso, popular em muitas partes do mundo. Esses salgadinhos são geralmente feitos de milho, temperados com uma combinação única de especiarias e assados ou fritos até atingirem uma textura leve e crocante.',
+            valor: 5.00,
+            qnt: 0  
+        },
+        {
+            id: 202, 
+            name: 'Esfiha',
+            url: 'https://i.ytimg.com/vi/xEumVhfcYzU/maxresdefault.jpg',
+            descricao: 'A esfiha é um delicioso quitute de origem árabe que consiste em uma massa macia e recheada com uma combinação de ingredientes saborosos. A massa da esfiha é geralmente feita com farinha de trigo, água, fermento e sal, resultando em uma textura leve e fofinha.',
+            valor: 6.50,
+            qnt: 0  
+        },
+        {
+            id: 203, 
+            name: 'Baião de Dois',
+            url: 'https://static.itdg.com.br/images/1200-630/5c8065da807efe5372cd08403803c788/365866-original.jpg',
+            descricao: 'É uma combinação de arroz e feijão de corda cozidos juntos, resultando em uma mistura saborosa e consistente. Além do arroz e feijão, o baião de dois leva outros ingredientes como carne seca, linguiça calabresa, queijo coalho, cebola, alho, pimentões e temperos como coentro e cominho.',
+            valor: 21.50,
+            qnt: 0  
+        },
+        {
+            id: 204, 
+            name: 'Vaca Atolada',
+            url: 'https://receitasdeminuto.com/wp-content/uploads/2022/03/vaca_atolada1.jpg',
+            descricao: 'É um prato rico e reconfortante, preparado com carne de boi, geralmente costela ou ossobuco, e mandioca (também conhecida como aipim ou macaxeira) como ingredientes principais.',
+            valor: 20.00,
+            qnt: 0  
+        },
+        {
+            id: 205, 
+            name: 'Macarronada',
+            url: 'https://www.sabornamesa.com.br/media/k2/items/cache/b5b56b2ae93d3dc958cf0c21c9383b18_XL.jpg',
+            descricao: 'A base da macarronada é o macarrão, que pode variar em formato, como espaguete, penne, fusilli, entre outros. O macarrão é cozido até ficar al dente, ou seja, com uma textura firme porém cozido.',
+            valor: 21.90,
+            qnt: 0  
+        },
+        {
+            id: 206, 
+            name: 'Lasanha',
+            url: 'https://static.itdg.com.br/images/1200-630/5a4887ec15a6bc742554f04def00ed4d/325115-original.jpg',
+            descricao: 'A lasanha é um prato clássico da culinária italiana, conhecido por suas camadas de massa intercaladas com molho de tomate, queijo e outros ingredientes saborosos.',
+            valor: 11.00,
+            qnt: 0  
+        },
+    ])
+
     const combos = reactive([
         {
             id: 100, 
@@ -274,6 +334,7 @@ export const useCardapioStore = defineStore('cardapio', () => {
         combos,
         pratoPrincipal,
         pratoFrio,
+        promocao,
         filtraTipo,
     }
 })

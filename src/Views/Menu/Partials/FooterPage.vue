@@ -72,6 +72,7 @@ const icons = [
     padding: 0 !important;
     height: 100%;
     overflow-y: hidden;
+    flex: 0 0 auto;
 }
 
 .curso {
