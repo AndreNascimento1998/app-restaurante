@@ -7,12 +7,12 @@
                     cover>
                 </v-img>
                 <v-card-text>
-                    <div>Realizando a reserva online você garante seu lugar já</div>
+                    <div>Aqui você tem promoções especiais todos os dias!</div>
                 </v-card-text>
 
                 <v-card-actions>
                     <v-btn block variant="outlined" class="letra">
-                        Faça sua reserva
+                        Veja as Promoções
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -24,7 +24,7 @@
                     cover>
                 </v-img>
                 <v-card-text>
-                    <div>Faça seu pedido, confira as promoções diárias</div>
+                    <div>Faça seu pedido, confira o cardápio e combos diários!</div>
                 </v-card-text>
 
                 <v-card-actions>
@@ -36,9 +36,9 @@
         </v-col>
     </v-row>
 
-    <v-divider class="mt-2" />
+    <v-divider class="mt-4" />
 
-    <v-row class="mt-6 pa-4">
+    <v-row class="mt-4 pa-4">
         <v-col cols="12">
             <h2 style="font-style: italic;" class="letra">Lançamentos</h2>
         </v-col>
@@ -100,16 +100,18 @@
 
 <script setup>
 import router from '@/router';
+import { useGlobalStore } from '@/stores/GlobalStore';
 import { useHomeStore } from '@/stores/HomeStore';
 import { computed } from 'vue';
 
-
+const globalStore = useGlobalStore()
 const homeStore = useHomeStore()
 const pratos = computed(() => homeStore.pratos)
 const depoimentos = computed(() => homeStore.depoimentos)
 
 function paginaCardapio(item) {
-    router.push(`/cardapio/${item.nome}`)
+    globalStore.refeicaoPagePrincipal = item.nome
+    router.push(`/cardapio`)
 }
 
 </script>

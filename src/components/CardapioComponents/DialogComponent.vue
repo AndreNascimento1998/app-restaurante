@@ -65,16 +65,17 @@ function adicionar() {
     let total = 0
     let totalItens = 0
 
-    const itemAtual = carrinhoComprasStore.carrinhoDeCompras.find( item => item.nome === props.nome)
+    const itemAtual = carrinhoComprasStore.carrinhoDeCompras.find( item => item.id === props.id)
     
     if(itemAtual === undefined){
     carrinhoComprasStore.carrinhoDeCompras.push({
         id: props.id,
         nome: props.nome,
+        src: props.src,
         valor: props.valor,
         qnt: contadorPorcao.value
     })} else{
-        const index = carrinhoComprasStore.carrinhoDeCompras.findIndex ( item => item.nome === props.nome)
+        const index = carrinhoComprasStore.carrinhoDeCompras.findIndex ( item => item.id === props.id)
         carrinhoComprasStore.carrinhoDeCompras[index].qnt += contadorPorcao.value
     }
     

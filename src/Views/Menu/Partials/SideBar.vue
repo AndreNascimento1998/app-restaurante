@@ -23,7 +23,7 @@ const sideMenu = ref(null)
 const menuItems = [
     { title: 'Início', icon: 'mdi-home', action: () => router.push('/inicio') },
     { title: 'Cardápio', icon: 'mdi-food',  action: () => router.push('/cardapio')},
-    { title: 'Promoções', icon: 'mdi-tag' },
+    { title: 'Promoções', icon: 'mdi-tag', action: ()   => router.push('/cardapio/promocao') },
     { title: 'Carrinho de Compras', icon: 'mdi-cart-check' },
     { title: 'Configurações', icon: 'mdi-cog' },
 ]

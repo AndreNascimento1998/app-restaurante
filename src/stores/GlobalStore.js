@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 export const useGlobalStore = defineStore('global', () => {
     let tema = ref('light')
+    const refeicaoPagePrincipal = ref('')
 
     function trocaTema() {
         if(tema.value === 'light') {
@@ -13,6 +14,7 @@ export const useGlobalStore = defineStore('global', () => {
     }
 
     return {
+        refeicaoPagePrincipal,
         tema,
         trocaTema
     }
