@@ -102,7 +102,7 @@ export const useCardapioStore = defineStore('cardapio', () => {
             id: 1, 
             name: 'Misto-quente',
             url: 'https://food-images.files.bbci.co.uk/food/recipes/tiktok_breakfast_42301_16x9.jpg',
-            descricao: 'é um sanduíche quente, preparado à base de queijo e presunto (ou fiambre). Pode ser preparado em frigideira, forno convencional, forno de micro-ondas ou prensa térmica ("misteira" ou sanduicheira).',
+            descricao: 'É um sanduíche quente, preparado à base de queijo e presunto (ou fiambre). Pode ser preparado em frigideira, forno convencional, forno de micro-ondas ou prensa térmica ("misteira" ou sanduicheira).',
             valor: 14.90,
             qnt: 0
         },
