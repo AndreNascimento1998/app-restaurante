@@ -6,7 +6,7 @@
                 <v-card density="compact" class="mx-auto" max-width="550">
                     <v-img class="align-end text-white " height="150" :src="item.url" cover />
                     <v-card-title>
-                        {{ item.name }}
+                        {{ item.nome }}
                     </v-card-title>
                     <v-card-text>
                         <span>{{ item.descricao.slice(0, 95) }} </span> <span v-if="item.descricao.length > 95">...</span>
@@ -14,10 +14,10 @@
 
                     <v-card-actions>
                         <dialog-component 
-                            :nome="item.name" 
+                            :nome="item.nome" 
                             :src="item.url" 
                             :descricao="item.descricao"
-                            :id="item.id"
+                            :id="item._id"
                             :valor="item.valor"
                         />
                     </v-card-actions>
@@ -41,6 +41,7 @@
     })
 
     const filtraItem = computed(() => cardapioState.filtraTipo(props.itemProcurado, props.searchItem))
+    
 </script>
 
 <style scoped>
