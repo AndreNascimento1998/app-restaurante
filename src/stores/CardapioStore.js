@@ -1,7 +1,11 @@
+import CardapioHttp from "@/Services/Http/CardapioHttp";
 import { defineStore } from "pinia";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 
 export const useCardapioStore = defineStore('cardapio', () => {
+
+    const cardapioHttp = new CardapioHttp()
+    const lanche = ref([])
 
     const promocao = reactive([
         {
@@ -96,98 +100,6 @@ export const useCardapioStore = defineStore('cardapio', () => {
             qnt: 0  
         },
     ])
-
-    const lanche = reactive([
-        { 
-            id: 1, 
-            name: 'Misto-quente',
-            url: 'https://food-images.files.bbci.co.uk/food/recipes/tiktok_breakfast_42301_16x9.jpg',
-            descricao: 'É um sanduíche quente, preparado à base de queijo e presunto (ou fiambre). Pode ser preparado em frigideira, forno convencional, forno de micro-ondas ou prensa térmica ("misteira" ou sanduicheira).',
-            valor: 14.90,
-            qnt: 0
-        },
-        { 
-            id: 2, 
-            name: 'Pizza de calabresa',
-            url: 'https://www.sabornamesa.com.br/media/k2/items/cache/9189082f4804c1ab16e77d2cfe8d09d4_XL.jpg',
-            descricao: 'É especialmente preparada com recheio generoso de linguiça calabresa de primeira qualidade, queijo muçarela e orégano. A linguiça calabresa agrega um sabor único e levemente picante à pizza.',
-            valor: 35.00,
-            qnt: 0
-        },
-        { 
-            id: 3, 
-            name: 'Pizza Portuguesa',
-            url: 'https://res.cloudinary.com/mrancho/cardapio/2016/06/pizza-portuguesa_min.jpg',
-            descricao:'Mussarela, presunto, tomate, cebola, alho, azeite, orégano, ervilha, ovos cozidos e azeitonas',
-            valor: 32.90,
-            qnt: 0
-        },
-        { 
-            id: 4, 
-            name: 'X-tudo',
-            url: 'https://www.manollopizzaria.com.br/wp-content/uploads/2021/02/X_TUDO_DE_HAMBURGUER1-1.jpg',
-            descricao: 'Pão, Carne, Maionese, Queijo, Bacon, Ovo, Presunto, Salada e Batata Palha.',
-            valor: 22.00,
-            qnt: 0
-        },
-        { 
-            id: 5, 
-            name: 'X-salada',
-            url: 'https://assets.unileversolutions.com/recipes-v2/106684.jpg',
-            descricao: 'Pão, Carne, Maionese, Queijo, Presunto, Salada e Batata Palha.',
-            valor: 18.00,
-            qnt: 0
-        },
-        { 
-            id: 21, 
-            name: 'Hamburguer',
-            url: 'https://uploads.metropoles.com/wp-content/uploads/2022/05/03124339/hamburguer-8-1024x683.jpg',
-            descricao: 'O hambúrguer (do inglês hamburger), também conhecido como hamburgo, hamburguesa ou sanduíche de carne, é um preparado de carne temperada (principalmente de carne bovina, ocasionalmente de frango moído, carne suína moída ou com misturas de carnes) e moldada em formato circular.',
-            valor: 23.50,
-            qnt: 0
-        },
-        { 
-            id: 22, 
-            name: 'Coxinha',
-            url: 'https://static.itdg.com.br/images/1200-630/12d6edf758753748df23c3b69a2258fc/279010-original.jpg',
-            descricao: 'PA coxinha é um salgado brasileiro, de origem paulista, feito com massa de farinha de trigo e caldo de galinha, que envolve um recheio elaborado com carne temperada de frango, queijo, calabresa ou vários outros tipos de sabores.',
-            valor: 12.00,
-            qnt: 0
-        },
-        { 
-            id: 23, 
-            name: 'Pastel de Carne',
-            url: 'https://claudia.abril.com.br/wp-content/uploads/2020/02/receita-pastel-de-carne-moida-e-repolho.jpg',
-            descricao: 'Recheado com carne moída nobre e refogada ao vinho com temperos fresquinhos. Um pouquinho de ervas frescas, ovo cozido e um toque de azeitonas e gotinhas de azeite extra virgem. Ingredientes: Carne bovina moída, massa para pastel, tomate, molho de tomate, salsa cebola, alho e cebolinha.',
-            valor: 12.00,
-            qnt: 0
-        },
-        { 
-            id: 24, 
-            name: 'Pastelão Frito',
-            url: 'https://receitasbaratas.com.br/wp-content/uploads/2023/01/Pastelao-Portugues-Delicioso-e-Facil-de-Preparar.jpg',
-            descricao: 'Pastelão é um alimento composto por uma massa à base de farinha a que se dá a forma de um envelope, se recheia e depois se frita por imersão em óleo fervente.',
-            valor: 11.50,
-            qnt: 0
-        },
-        { 
-            id: 25, 
-            name: 'Torta de Frango',
-            url: 'https://claudia.abril.com.br/wp-content/uploads/2020/02/receita-torta-frango-catupiry.jpg?quality=85&strip=info',
-            descricao: 'Os primeiros registros dão conta da sua origem no Grécia Antiga, como oferenda para a Deusa Artemis, a divindade da natureza. Os recheios eram frutas e cereais, em um formato redondo, em referência a Lua.',
-            valor: 14.50,
-            qnt: 0
-        },
-        { 
-            id: 26, 
-            name: 'Sandwich de Presunto',
-            url: 'https://acarnequeomundoprefere.com.br/uploads/media/image/3b22b9b26bbcf21c9dc1408efd6db120.jpg',
-            descricao: 'O melhor incontestável, pão recheado com presunto, muito saboroso!',
-            valor: 8.00,
-            qnt: 0
-        },
-        
-    ]) 
 
     const bebidas = reactive([
         { 
@@ -325,8 +237,13 @@ export const useCardapioStore = defineStore('cardapio', () => {
         }
     
         const searchLowCase = searchItem.toLowerCase()
-        return itens.filter(item => item.name.toLowerCase().includes(searchLowCase))
+        return itens.filter(item => item.nome.toLowerCase().includes(searchLowCase))
     }
+
+    async function fetchLanche() {
+        debugger
+        lanche.value = await cardapioHttp.getLanche()
+    }    
 
     return {
         lanche,
@@ -336,5 +253,6 @@ export const useCardapioStore = defineStore('cardapio', () => {
         pratoFrio,
         promocao,
         filtraTipo,
+        fetchLanche
     }
 })
