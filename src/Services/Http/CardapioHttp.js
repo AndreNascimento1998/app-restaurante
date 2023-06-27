@@ -7,13 +7,12 @@ class CardapioHttp {
     });
   }
 
-  async getLanche() {
+  async getAlimentoCategoria(rota) {
     try {
-      const response = await this.api.get('/lanches');
+      const response = await this.api.get(`${rota}`);
       return response.data;
     } catch (error) {
-      console.error(error);
-      throw new Error(`Erro ao obter lanches ${error}`);
+      return []
     }
   }
 }

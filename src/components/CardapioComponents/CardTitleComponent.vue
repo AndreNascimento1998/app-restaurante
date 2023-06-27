@@ -9,14 +9,14 @@
                         <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
                     </v-scale-transition>
                     <v-card-title class="mb-5">
-                        {{ item.name }}
+                        {{ item.nome }}
                     </v-card-title>
                      <v-card-text>
                         <span>{{ item.descricao.slice(0, 91) }} </span> <span v-if="item.descricao.length > 91">...</span>
                     </v-card-text> 
                     <v-card-actions>
                         <dialog-component 
-                            :nome="item.name" 
+                            :nome="item.nome" 
                             :src="item.url" 
                             :descricao="item.descricao" 
                             :id="item.id"

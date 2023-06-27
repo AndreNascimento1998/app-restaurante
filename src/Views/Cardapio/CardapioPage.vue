@@ -21,23 +21,23 @@
         </v-row>
         
             <span v-if="route.params.nome != 'promocao'">
-             <!--    <card-title-component 
+             <card-title-component 
                 class="mt-9"
-                :combos="combos"
+                :combos="cardapioState.combo"
                 :searchItem="searchItem"
                 />
-                
+             
                 <card-filter-component 
                 titulo="Pratos Principais"
                 :searchItem="searchItem"
-                :itemProcurado="pratoPrincipal"
+                :itemProcurado="cardapioState.pratoPrincipal"
                 />
 
             <card-filter-component 
                 titulo="Pratos Frios"
                 :searchItem="searchItem"
-                :itemProcurado="pratoFrio"
-            /> -->
+                :itemProcurado="cardapioState.pratoFrio"
+            />
 
          <card-filter-component 
                 titulo="Lanches"
@@ -45,28 +45,32 @@
                 :itemProcurado="cardapioState.lanche"
             />
                 
-<!--                <card-filter-component 
+           <card-filter-component 
                 titulo="Bebidas"
                 :searchItem="searchItem"
-                :itemProcurado="bebidas"
+                :itemProcurado="cardapioState.bebida"
             />
+
+
         </span>
+
+        
         <span v-if="route.params.nome == 'promocao'">
             <card-filter-component 
             titulo="PROMOÇÕES"
             :searchItem="searchItem"
-            :itemProcurado="promocao"
+            :itemProcurado="cardapioState.promocao"
             />
-        -->
+    
         </span> 
     </v-container> 
 </template>
 
 <script setup>
 import { useCardapioStore } from "@/stores/CardapioStore";
-import {  onMounted, ref } from "vue";
+import {  onMounted, onUnmounted, ref } from "vue";
 import CardFilterComponent from "@/components/CardapioComponents/CardFilterComponent.vue";
-//import CardTitleComponent from "@/components/CardapioComponents/CardTitleComponent.vue";
+import CardTitleComponent from "@/components/CardapioComponents/CardTitleComponent.vue";
 import { useRoute } from "vue-router";
 import router from "@/router";
 import { useGlobalStore } from "@/stores/GlobalStore";
@@ -77,7 +81,7 @@ const route = useRoute()
 const globalStore = useGlobalStore()
 const cardapioState = useCardapioStore()
 
-/* const bebidas = cardapioState.bebidas
+/* 
 const combos = cardapioState.combos
 const pratoPrincipal = cardapioState.pratoPrincipal
 const pratoFrio = cardapioState.pratoFrio
@@ -87,9 +91,16 @@ const promocao = cardapioState.promocao */
 onMounted(async () => {
 
     if(!cardapioState.lanche.length){
-        await cardapioState.fetchLanche()
+        cardapioState.lanche = await cardapioState.fetchAlimentoCategoria('/lanches')
+        cardapioState.bebida = await cardapioState.fetchAlimentoCategoria('/bebidas')
+        cardapioState.combo = await cardapioState.fetchAlimentoCategoria('/combos')
+        cardapioState.pratoPrincipal = await cardapioState.fetchAlimentoCategoria('/prato-principal')
+        cardapioState.pratoFrio = await cardapioState.fetchAlimentoCategoria('/prato-frio')
+        cardapioState.promocao = await cardapioState.fetchAlimentoCategoria('/promocao')
     }
+
     window.scrollTo(0, 0)
+
     if(route.params.nome != 'promocao') {
         tituloRota.value = 'Promoção'
         searchItem.value = globalStore.refeicaoPagePrincipal
@@ -107,6 +118,10 @@ function trocaRota() {
         router.push('/cardapio')
     }
 }
+
+onUnmounted(() => {
+    globalStore.refeicaoPagePrincipal = ''
+})
 
 </script>
 
