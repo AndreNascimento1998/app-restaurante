@@ -81,13 +81,6 @@ const route = useRoute()
 const globalStore = useGlobalStore()
 const cardapioState = useCardapioStore()
 
-/* 
-const combos = cardapioState.combos
-const pratoPrincipal = cardapioState.pratoPrincipal
-const pratoFrio = cardapioState.pratoFrio
-const promocao = cardapioState.promocao */
-
-
 onMounted(async () => {
 
     if(!cardapioState.lanche.length){

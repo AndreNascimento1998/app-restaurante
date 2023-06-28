@@ -19,7 +19,7 @@
                             :nome="item.nome" 
                             :src="item.url" 
                             :descricao="item.descricao" 
-                            :id="item.id"
+                            :id="item._id"
                             :valor="item.valor" />
                     </v-card-actions>
                 </v-card>

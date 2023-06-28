@@ -71,6 +71,7 @@ function adicionar() {
     carrinhoComprasStore.carrinhoDeCompras.push({
         id: props.id,
         nome: props.nome,
+        descricao: props.descricao,
         src: props.src,
         valor: props.valor,
         qnt: contadorPorcao.value
