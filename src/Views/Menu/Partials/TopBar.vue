@@ -11,7 +11,7 @@
         <span>
             <v-icon class="cor-texto cursor" size="35px" @click="(() => router.push('/carrinho'))">mdi-shopping</v-icon>
         </span>
-        <span class="carrinho-letra margin-direita">R$ {{ precoCarrinho.toFixed(2) }} <p>itens: {{ itenQnt }}</p></span>
+        <span class="carrinho-letra margin-direita">R$ {{ Math.abs(precoCarrinho).toFixed(2) }} <p>itens: {{ itenQnt }}</p></span>
         <v-menu left bottom>
             <template #activator="{ props }">
                 <v-btn icon v-bind="props">
@@ -31,10 +31,8 @@
 <script setup>
 import router from "@/router";
 import { useCarrinhoCompras } from "@/stores/CarrinhoCompras";
-import { useGlobalStore } from "@/stores/GlobalStore";
 import {  computed, ref } from "vue";
 
-const globalStore = useGlobalStore()
 const carrinhoComprasStore = useCarrinhoCompras()
 
 const precoCarrinho = computed(() => carrinhoComprasStore.precoStore)
@@ -49,11 +47,6 @@ const options = ref([
         text: 'Editar Perfil', 
         icon: 'mdi-pencil',
         action: () => alert('Oi')},
-    { 
-        text: 'Trocar Tema', 
-        icon: 'mdi-theme-light-dark',
-        action: () => globalStore.trocaTema() 
-    },
     { 
         text: 'Sair', 
         icon: 'mdi-logout',

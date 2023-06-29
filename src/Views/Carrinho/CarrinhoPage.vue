@@ -43,19 +43,22 @@
                             Remover todos itens
                         </v-btn>
                     </v-col>
-
                 </v-row>
             </v-card>
         </v-list>
+        <section class="text-end">
+            Valor total: <span class="letra">{{ carrinhoStore.precoStore.toFixed(2) }}</span>
+        </section>
     </v-container>
     <v-container v-else>
-        <h1>Carrinho vazio</h1>
+        <carrinho-vazio-page/>
     </v-container>
 </template>
 
 <script setup>
 import { useCarrinhoCompras } from '@/stores/CarrinhoCompras'
 import { computed, onMounted } from 'vue'
+import CarrinhoVazioPage from './Partials/CarrinhoVazioPage.vue'
 
 const carrinhoStore = useCarrinhoCompras()
 const itensCarrinho = computed(() => carrinhoStore.carrinhoDeCompras)

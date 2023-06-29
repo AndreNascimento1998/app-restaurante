@@ -16,8 +16,10 @@
 
 <script setup>
 import router from "@/router"
+import { useGlobalStore } from "@/stores/GlobalStore"
 import { ref } from "vue"
 
+const globalStore = useGlobalStore()
 const sideMenu = ref(null)
 
 const menuItems = [
@@ -25,6 +27,7 @@ const menuItems = [
     { title: 'Cardápio', icon: 'mdi-food',  action: () => router.push('/cardapio')},
     { title: 'Promoções', icon: 'mdi-tag', action: ()   => router.push('/cardapio/promocao') },
     { title: 'Carrinho de Compras', icon: 'mdi-cart-check', action: () => router.push('/carrinho') },
+    {title: 'Trocar Tema', icon: 'mdi-theme-light-dark', action: () => globalStore.trocaTema()  },
     { title: 'Configurações', icon: 'mdi-cog' },
 ]
 </script>

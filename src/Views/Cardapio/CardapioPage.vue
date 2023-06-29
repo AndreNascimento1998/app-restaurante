@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row class="pa-0">
-            <v-col cols="4">
+            <v-col cols="6">
                 <v-text-field 
                     v-model="searchItem" 
                     hide-details="auto" 
@@ -13,7 +13,7 @@
                 />
             </v-col>
             
-            <v-col class="mt-1" cols="8">
+            <v-col class="mt-1" cols="6">
                 <v-btn @click="trocaRota()" block class="letra" variant="outlined" >
                     {{ tituloRota }}
                 </v-btn>
