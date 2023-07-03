@@ -1,8 +1,8 @@
 <template>
-    <h2 style="font-style: italic;" class="letra pa-2 mt-10" v-show="filtraItem.length == 0 ? false : true">{{ props.titulo }}
+    <h2 style="font-style: italic;" class="letra pa-2 mt-10" v-show="itemFilter.length == 0 ? false : true">{{ props.title }}
         </h2>
         <v-row>
-            <v-col v-for="item in filtraItem" :key="item.id" cols="4">
+            <v-col v-for="item in itemFilter" :key="item.id" cols="4">
                 <v-card density="compact" class="mx-auto" max-width="550">
                     <v-img class="align-end text-white " height="150" :src="item.url" cover />
                     <v-card-title>
@@ -31,16 +31,16 @@
     import { useCardapioStore } from "@/stores/CardapioStore";
     import { computed } from "vue";
     import { defineProps } from "vue";
-
+    
     const cardapioState = useCardapioStore()
 
     const props = defineProps({
-        titulo: String,
+        title: String,
         searchItem: String,
-        itemProcurado: Array
+        wantedItem: Array
     })
 
-    const filtraItem = computed(() => cardapioState.filtraTipo(props.itemProcurado, props.searchItem))
+    const itemFilter = computed(() => cardapioState.filtraTipo(props.wantedItem, props.searchItem))
     
 </script>
 

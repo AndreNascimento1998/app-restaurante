@@ -1,8 +1,8 @@
 <template>
-    <v-sheet v-show="filtraCombo?.length == 0 ? false : true" class="mx-auto" elevation="8" max-width="1200">
+    <v-sheet v-show="comboFilter?.length == 0 ? false : true" class="mx-auto" elevation="8" max-width="1200">
         <h2 style="font-style: italic;" class="letra pa-2">COMBOS</h2>
         <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="item in filtraCombo" :key="item" v-slot="{ isSelected, selectedClass }">
+            <v-slide-group-item v-for="item in comboFilter" :key="item" v-slot="{ isSelected, selectedClass }">
                 <v-card :class="['ma-4', selectedClass]" height="350" width="350">
                     <v-img class="promocao text-white" width="350"  :src="item.url" cover />
                     <v-scale-transition>
@@ -34,14 +34,14 @@ import DialogComponent from "@/components/CardapioComponents/DialogComponent.vue
 import { useCardapioStore } from "@/stores/CardapioStore";
 import { computed, defineProps } from "vue";
 
-const cardapioState = useCardapioStore()
+const carteState = useCardapioStore()
 
 const props = defineProps({
     searchItem: String,
     combos: Array,
 })
 
-const filtraCombo = computed(() => cardapioState.filtraTipo(props.combos, props.searchItem))
+const comboFilter = computed(() => carteState.filtraTipo(props.combos, props.searchItem))
 </script>
 
 <style scoped>

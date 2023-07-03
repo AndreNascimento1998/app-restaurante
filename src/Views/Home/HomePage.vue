@@ -2,8 +2,8 @@
     <v-container fluid>
         <v-carousel interval="6000" cycle height="400px" show-arrows="hover">
             <v-carousel-item 
-                v-for="(item, key) in itens" 
-                :key="key" @click="rota(item)" 
+                v-for="(item, key) in items" 
+                :key="key" @click="urlItemCarousel(item)" 
                 :src="item.src" 
                 cover 
                 class="click"
@@ -18,7 +18,7 @@
 import midPage from './Partials/MidPage.vue'
 import { onMounted, ref } from 'vue';
 
-const itens = ref([
+const items = ref([
     {
         src: 'https://cocobambu.com/wp-content/uploads/2022/06/CB_BR_INSTI_224_22_BANNERS_SITE_COCO_BAMBU_PRINCIPAL_1500x600.png',
         url: 'https://pictogrammers.com/library/mdi/'
@@ -45,7 +45,7 @@ onMounted(() => {
     window.scrollTo(0, 0)
 })
 
-function rota(item) {
+function urlItemCarousel(item) {
     if(item.url){
         window.open(item.url)
     }

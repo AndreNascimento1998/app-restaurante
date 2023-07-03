@@ -1,6 +1,6 @@
 <template>
-    <v-container v-if="itensCarrinho.length > 0">
-        <v-list v-for="(item, index) in itensCarrinho" :key="item.nome">
+    <v-container v-if="itensCart.length > 0">
+        <v-list v-for="(item, index) in itensCart" :key="item.nome">
             <v-card class="pa-0">
                 <v-row class="vertical-centro pa-2">
                     <v-col cols="1">
@@ -19,7 +19,7 @@
                     </v-col>
                     <v-col cols="3" class="text-center">
                         <v-btn 
-                            density="comfortable" @click="(retira(index, item))" 
+                            density="comfortable" @click="(removeOneItem(index, item))" 
                             :disabled="item.qnt === 0"
                         >
                             <v-icon>mdi-minus</v-icon>
@@ -28,7 +28,7 @@
                             Quantidade:  {{ item.qnt }}
 
 
-                        <v-btn density="comfortable" @click="(adiciona(index))">
+                        <v-btn density="comfortable" @click="(addOneItem(index))">
                             <v-icon>mdi-plus</v-icon>
                         </v-btn>
 
@@ -38,7 +38,7 @@
 
                     <v-col cols="2" class="text-center">
                         <v-btn 
-                        @click="remover(item)" block variant="outlined" class="letra"
+                        @click="removeAllItems(item)" block variant="outlined" class="letra"
                     >
                             Remover todos itens
                         </v-btn>
@@ -47,7 +47,7 @@
             </v-card>
         </v-list>
         <section class="text-end">
-            Valor total: <span class="letra">{{ carrinhoStore.precoStore.toFixed(2) }}</span>
+            Valor total: <span class="letra">{{ shoppCartStore.precoStore.toFixed(2) }}</span>
         </section>
     </v-container>
     <v-container v-else>
@@ -60,35 +60,34 @@ import { useCarrinhoCompras } from '@/stores/CarrinhoCompras'
 import { computed, onMounted } from 'vue'
 import CarrinhoVazioPage from './Partials/CarrinhoVazioPage.vue'
 
-const carrinhoStore = useCarrinhoCompras()
-const itensCarrinho = computed(() => carrinhoStore.carrinhoDeCompras)
+const shoppCartStore = useCarrinhoCompras()
+const itensCart = computed(() => shoppCartStore.carrinhoDeCompras)
 
 
-function remover(item){
-    const indexItemExcluir = itensCarrinho.value.findIndex( (carrinho) => carrinho.id === item.id)
+function removeAllItems(item){
+    const indexItemDeleted = itensCart.value.findIndex( (carrinho) => carrinho.id === item.id)
 
-    if(indexItemExcluir !== -1){
-        carrinhoStore.precoStore -= (item.valor * item.qnt)
-        carrinhoStore.itensQnt -= item.qnt
-        carrinhoStore.carrinhoDeCompras.splice(indexItemExcluir, 1)
+    if(indexItemDeleted !== -1){
+        shoppCartStore.precoStore -= (item.valor * item.qnt)
+        shoppCartStore.itensQnt -= item.qnt
+        shoppCartStore.carrinhoDeCompras.splice(indexItemDeleted, 1)
     }
 }
 
-function retira(index, item){
-    
-    carrinhoStore.carrinhoDeCompras[index].qnt -= 1
-    carrinhoStore.precoStore -= carrinhoStore.carrinhoDeCompras[index].valor
-    carrinhoStore.itensQnt -= 1
+function removeOneItem(index, item){
+    shoppCartStore.carrinhoDeCompras[index].qnt -= 1
+    shoppCartStore.precoStore -= shoppCartStore.carrinhoDeCompras[index].valor
+    shoppCartStore.itensQnt -= 1
     
     if(item.qnt === 0){
-        remover(item)
+        removeAllItems(item)
     }
 }
 
-function adiciona(index) {
-    carrinhoStore.carrinhoDeCompras[index].qnt += 1
-    carrinhoStore.precoStore += carrinhoStore.carrinhoDeCompras[index].valor
-    carrinhoStore.itensQnt += 1
+function addOneItem(index) {
+    shoppCartStore.carrinhoDeCompras[index].qnt += 1
+    shoppCartStore.precoStore += shoppCartStore.carrinhoDeCompras[index].valor
+    shoppCartStore.itensQnt += 1
 }
 
 onMounted(() => {
