@@ -9,23 +9,20 @@
                         </v-avatar>
                     </v-col>
                     <v-col cols="2">
-                        Item:  {{ item.nome }}
+                        Item: {{ item.nome }}
                     </v-col>
                     <v-col cols="2">
-                        Valor:  R$ {{ (item.valor * item.qnt).toFixed(2) }}
+                        Valor: R$ {{ (item.valor * item.qnt).toFixed(2) }}
                     </v-col>
                     <v-col cols="2">
                         text-qualquer
                     </v-col>
                     <v-col cols="3" class="text-center">
-                        <v-btn 
-                            density="comfortable" @click="(removeOneItem(index, item))" 
-                            :disabled="item.qnt === 0"
-                        >
+                        <v-btn density="comfortable" @click="(removeOneItem(index, item))" :disabled="item.qnt === 0">
                             <v-icon>mdi-minus</v-icon>
                         </v-btn>
 
-                            Quantidade:  {{ item.qnt }}
+                        Quantidade: {{ item.qnt }}
 
 
                         <v-btn density="comfortable" @click="(addOneItem(index))">
@@ -37,21 +34,25 @@
 
 
                     <v-col cols="2" class="text-center">
-                        <v-btn 
-                        @click="removeAllItems(item)" block variant="outlined" class="letra"
-                    >
+                        <v-btn @click="removeAllItems(item)" block variant="outlined" class="letra">
                             Remover todos itens
                         </v-btn>
                     </v-col>
                 </v-row>
             </v-card>
         </v-list>
-        <section class="text-end">
-            Valor total: <span class="letra">{{ shoppCartStore.precoStore.toFixed(2) }}</span>
-        </section>
+        <v-row class="mt-1">
+            <v-col cols="3" offset="9">
+                <v-card>
+                    <section class="text-center pa-2">
+                        <span class="description-letter">Valor total:</span> <strong class="value-letter">R$ {{ shoppCartStore.precoStore.toFixed(2) }}</strong>
+                    </section>
+                </v-card>
+            </v-col>
+        </v-row>
     </v-container>
     <v-container v-else>
-        <carrinho-vazio-page/>
+        <carrinho-vazio-page />
     </v-container>
 </template>
 
@@ -64,22 +65,22 @@ const shoppCartStore = useCarrinhoCompras()
 const itensCart = computed(() => shoppCartStore.carrinhoDeCompras)
 
 
-function removeAllItems(item){
-    const indexItemDeleted = itensCart.value.findIndex( (carrinho) => carrinho.id === item.id)
+function removeAllItems(item) {
+    const indexItemDeleted = itensCart.value.findIndex((carrinho) => carrinho.id === item.id)
 
-    if(indexItemDeleted !== -1){
+    if (indexItemDeleted !== -1) {
         shoppCartStore.precoStore -= (item.valor * item.qnt)
         shoppCartStore.itensQnt -= item.qnt
         shoppCartStore.carrinhoDeCompras.splice(indexItemDeleted, 1)
     }
 }
 
-function removeOneItem(index, item){
+function removeOneItem(index, item) {
     shoppCartStore.carrinhoDeCompras[index].qnt -= 1
     shoppCartStore.precoStore -= shoppCartStore.carrinhoDeCompras[index].valor
     shoppCartStore.itensQnt -= 1
-    
-    if(item.qnt === 0){
+
+    if (item.qnt === 0) {
         removeAllItems(item)
     }
 }
@@ -97,6 +98,15 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.description-letter {
+    font-size: 18px;
+}
+
+.value-letter {
+    color: #da7b08;
+    font-size: 18px;
+    text-decoration: underline;
+}
 .letra {
     color: #da7b08;
 }
