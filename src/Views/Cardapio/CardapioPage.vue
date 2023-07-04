@@ -57,7 +57,7 @@
         
         <span v-if="route.params.nome == 'promocao'">
             <card-filter-component 
-            title="PROMOÇÕES"
+            title="Promoções"
             :searchItem="searchItem"
             :wantedItem="carteState.promocao"
             />
