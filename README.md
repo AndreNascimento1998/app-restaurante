@@ -35,6 +35,12 @@ Código Limpo
 #### Carte (light)
 <img src="src/assets/readmeImg/cardapioPage.png">
 
+#### Carte Modal (dark)
+<img src="src/assets/readmeImg/cardapioModalDark.png">
+
+#### Carte Modal (dark)
+<img src="src/assets/readmeImg/cadarpioModalLight.png">
+
 #### Promotion (dark)
 <img src="src/assets/readmeImg/promocaoPage.png">
 
