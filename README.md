@@ -17,7 +17,8 @@ Componentização
 Reaproveitamento de Rotas
 Código Limpo
 ```
-[Consumindo API - api-restaurante](https://github.com/AndreNascimento1998/api-restaurante){:target="_blank"}
+<a href="https://github.com/AndreNascimento1998/api-restaurante" target="_blank">Consumindo API - api-restaurante</a>
+
 
 ### Images
 
