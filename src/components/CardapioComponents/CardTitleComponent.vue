@@ -11,7 +11,7 @@
                     <v-card-title class="mb-5">
                         {{ item.nome }}
                     </v-card-title>
-                     <v-card-text>
+                    <v-card-text>
                         <span>{{ item.descricao.slice(0, 91) }} </span> <span v-if="item.descricao.length > 91">...</span>
                     </v-card-text> 
                     <v-card-actions>
