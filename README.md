@@ -16,9 +16,8 @@ Vue-Router
 Componentização
 Reaproveitamento de Rotas
 Código Limpo
-
-[Consumindo API api-restaurante](https://github.com/AndreNascimento1998/api-restaurante)
 ```
+[Consumindo API api-restaurante](https://github.com/AndreNascimento1998/api-restaurante)
 
 ### Images
 
