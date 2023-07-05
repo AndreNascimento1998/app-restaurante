@@ -32,7 +32,11 @@
                         <v-btn class="letra" variant="text" @click="cancel">
                             Cancelar
                         </v-btn>
-                        <v-btn class="letra" variant="text" @click="addItems">
+                        <v-btn 
+                            class="letra" 
+                            variant="text" 
+                            @click="globalStore.isLog ? addItems() : router.push('/login')"
+                        >
                             Adicionar
                         </v-btn>
                     </v-card-actions>
@@ -43,10 +47,13 @@
 </template>
 
 <script setup>
+import router from "@/router";
 import { useCarrinhoCompras } from "@/stores/CarrinhoCompras";
+import { useGlobalStore } from "@/stores/GlobalStore";
 import { computed, ref } from "vue";
 import { defineProps } from 'vue';
 
+const globalStore = useGlobalStore()
 const shopCartStore = useCarrinhoCompras()
 let dialog = ref(false)
 let countPortion = ref(1)
@@ -60,11 +67,11 @@ const props = defineProps({
 })
 
 const valueModal = computed(() => props.valor * countPortion.value)
-
+ 
 function addItems() {
     const itemAtual = shopCartStore.carrinhoDeCompras.find( item => item.id === props.id)
     
-   verifyItem(itemAtual)
+    verifyItem(itemAtual)
     
     const {total, totalItems} = addValuesForPrecoStore()
 
@@ -112,7 +119,6 @@ function cancel() {
 function countMinus() {
     countPortion.value -= 1
 }
-
 
 </script>
 

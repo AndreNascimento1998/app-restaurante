@@ -20,23 +20,20 @@
 
                             </v-col>
 
-                            <v-col cols="6" class="cor-2 pa-0 letra">
+                            <v-col cols="6" class="cor-2 pa-0">
 
-                                <v-card-title class="pa-4 mt-10 text-center">
+                                <v-card-title class="pa-4 mt-8 mb-8 text-center letra">
                                     Food Chain Magnate
                                 </v-card-title>
 
-                                <v-col cols="8" offset="2" class="mt-8">
+                                <v-col cols="8" offset="2" class="pa-0">
                                     <v-text-field 
                                         label="E-mail" 
                                         density="compact" 
                                         variant="underlined"
-                                        placeholder="aaaaa_14@ig.com"
-                                        persistent-placeholder
                                     />
                                 </v-col>
-
-                                <v-col cols="8" offset="2">
+                                <v-col cols="8" offset="2" class="pa-0">
                                     <v-text-field 
                                         label="Senha" 
                                         type="password"
@@ -45,21 +42,15 @@
                                     />
                                 </v-col>
 
-                                <v-col cols="8" offset="2" class="cor-botao mb-10">
+                                <v-col cols="8" offset="2" class="cor-botao mb-8 mt-4 pa-0">
                                     <v-btn block variant="outlined" >
                                         Entrar
                                     </v-btn>
                                     <span class="letra-esqueceu-senha">Esqueceu senha ?</span>
                                 </v-col>
 
-                                <v-col cols="8" offset="2" class="botao-cadastrar mb-2">
-                                    <v-btn block variant="outlined" >
-                                        Cadastrar-se
-                                    </v-btn>
-                                </v-col>
-
-                                <v-col class="mb-4">
-                                    <h1></h1>
+                                <v-col cols="8" offset="2" class="botao-cadastrar mb-10 pa-0">
+                                    <dialog-login-component />
                                 </v-col>
                             </v-col>
                         </v-row>
@@ -71,11 +62,13 @@
 </template>
 
 <script setup>
+import DialogLoginComponent from "@/Views/Login/Partials/RegisterPage.vue";
+
 </script>
 
 <style scoped>
 .centered-container {
-    margin-top: 65vh;
+    margin-top: 50%;
 }
 
 .cor-1 {
@@ -118,11 +111,5 @@
     cursor: pointer;
 }
 
-.botao-cadastrar {
-    color: white;
-}
 
-.botao-cadastrar:hover {
-    color: #da7b08;
-}
 </style>
