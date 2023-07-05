@@ -7,6 +7,8 @@ const useValidation = () => {
     const numberCase = (value) => /[1-9]/.test(value) || '*Número 1-9'
     const minLenght = (value) => value.length > 8 || '*Maior que 8 dígitos'
     const phoneMin = (value) => value.length > 13 || '*Maior que 13 dígitos'
+    const arrobaRequired = (value) => /@/.test(value) || '*@ obrigatório'
+
 
     return {
         required,
@@ -15,7 +17,8 @@ const useValidation = () => {
         lowCase,
         numberCase,
         minLenght,
-        phoneMin
+        phoneMin,
+        arrobaRequired
     }
 }
 

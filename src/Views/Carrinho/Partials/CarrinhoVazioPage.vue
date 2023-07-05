@@ -2,7 +2,7 @@
     <v-parallax class="borda"
         src="https://img.freepik.com/fotos-premium/uma-variedade-de-pratos-estao-em-exibicao-no-restaurante_900775-11515.jpg?w=2000"
         >
-        <v-row class="cor-fundo cor pa-2">
+        <v-row v-if="globalStore.isLog" class="cor-fundo cor pa-2">
             <v-col cols="5">
                 <span class="letra">Ver reservas! </span>
                 <span class="mt-4">
@@ -24,10 +24,19 @@
                 </span>
             </v-col>
         </v-row>
+        <v-row v-else>
+            <v-col>
+                dsdas
+            </v-col>
+        </v-row>
     </v-parallax>
 </template>
 
 <script setup>
+import { useGlobalStore } from "@/stores/GlobalStore";
+
+const globalStore = useGlobalStore()
+
 </script>
 
 <style scoped>

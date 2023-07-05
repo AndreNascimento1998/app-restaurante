@@ -75,9 +75,10 @@ const {
     minLenght,
     phoneMin,
     emailMin,
+    arrobaRequired
 } = useValidation()
 
-const emailRules = computed(() => [required, emailMin])
+const emailRules = computed(() => [required, emailMin, arrobaRequired])
 const passwordRules = computed(() => [required, upperCase, lowCase, numberCase, minLenght])
 const phoneRules = computed(() => [required, phoneMin])
 
@@ -94,7 +95,6 @@ async function register(isActive) {
 </script>
 
 <style scoped>
-
 .botao-cadastrar {
     color: white;
 }
