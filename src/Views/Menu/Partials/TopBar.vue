@@ -11,7 +11,7 @@
         <span>
             <v-icon class="cor-texto cursor" size="35px" @click="(() => router.push('/carrinho'))">mdi-shopping</v-icon>
         </span>
-        <span class="carrinho-letra margin-direita">R$ {{ Math.abs(precoCarrinho).toFixed(2) }} <p>itens: {{ itenQnt }}</p></span>
+        <span class="carrinho-letra margin-direita">R$ {{ Math.abs(priceCart).toFixed(2) }} <p>itens: {{ itemsQuantity }}</p></span>
         <v-menu left bottom>
             <template #activator="{ props }">
                 <v-btn icon v-bind="props">
@@ -35,8 +35,8 @@ import {  computed, ref } from "vue";
 
 const carrinhoComprasStore = useCarrinhoCompras()
 
-const precoCarrinho = computed(() => carrinhoComprasStore.precoStore)
-const itenQnt = computed(() => carrinhoComprasStore.itensQnt)
+const priceCart = computed(() => carrinhoComprasStore.precoStore)
+const itemsQuantity = computed(() => carrinhoComprasStore.itensQnt)
 
 const options = ref([
     { 

@@ -42,7 +42,7 @@
         <v-col cols="12">
             <h2 style="font-style: italic;" class="letra">Lançamentos</h2>
         </v-col>
-        <v-col v-for="(prato, index) in pratos" :key="index" cols="3">
+        <v-col v-for="(prato, index) in plate" :key="index" cols="3">
 
             <v-hover v-slot="{ isHovering, props }">
                 <v-card class="mx-auto rounded-pill" v-bind="props">
@@ -75,7 +75,7 @@
             <h2 style="font-style: italic;" class="letra">Depoimentos</h2>
         </v-col>
 
-        <v-col v-for="(item, index) in depoimentos" :key="index"  cols="3">
+        <v-col v-for="(item, index) in testimony" :key="index"  cols="3">
         <v-card class="d-flex flex-column align-center justify-center">
                 <v-avatar class="pa-1" size="100">
                     <img :src="item.url"
@@ -106,8 +106,8 @@ import { computed } from 'vue';
 
 const globalStore = useGlobalStore()
 const homeStore = useHomeStore()
-const pratos = computed(() => homeStore.pratos)
-const depoimentos = computed(() => homeStore.depoimentos)
+const plate = computed(() => homeStore.pratos)
+const testimony = computed(() => homeStore.depoimentos)
 
 function paginaCardapio(item) {
     globalStore.refeicaoPagePrincipal = item.nome

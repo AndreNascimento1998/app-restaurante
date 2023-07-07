@@ -15,7 +15,7 @@
             
             <v-col class="mt-1" cols="6">
                 <v-btn @click="trocaRota()" block class="letra" variant="outlined" >
-                    {{ tituloRota }}
+                    {{ wichRoute }}
                 </v-btn>
             </v-col>
         </v-row>
@@ -23,40 +23,40 @@
             <span v-if="route.params.nome != 'promocao'">
              <card-title-component 
                 class="mt-9"
-                :combos="cardapioState.combo"
+                :combos="carteState.combo"
                 :searchItem="searchItem"
                 />
              
                 <card-filter-component 
-                titulo="Pratos Principais"
+                title="Pratos Principais"
                 :searchItem="searchItem"
-                :itemProcurado="cardapioState.pratoPrincipal"
+                :wantedItem="carteState.pratoPrincipal"
                 />
 
             <card-filter-component 
-                titulo="Pratos Frios"
+                title="Pratos Frios"
                 :searchItem="searchItem"
-                :itemProcurado="cardapioState.pratoFrio"
+                :wantedItem="carteState.pratoFrio"
             />
 
          <card-filter-component 
-                titulo="Lanches"
+                title="Lanches"
                 :searchItem="searchItem"
-                :itemProcurado="cardapioState.lanche"
+                :wantedItem="carteState.lanche"
             />
                 
            <card-filter-component 
-                titulo="Bebidas"
+                title="Bebidas"
                 :searchItem="searchItem"
-                :itemProcurado="cardapioState.bebida"
+                :wantedItem="carteState.bebida"
             />
         </span>
         
         <span v-if="route.params.nome == 'promocao'">
             <card-filter-component 
-            titulo="PROMOÇÕES"
+            title="Promoções"
             :searchItem="searchItem"
-            :itemProcurado="cardapioState.promocao"
+            :wantedItem="carteState.promocao"
             />
     
         </span> 
@@ -72,39 +72,39 @@ import { useRoute } from "vue-router";
 import router from "@/router";
 import { useGlobalStore } from "@/stores/GlobalStore";
 
-let tituloRota = ref('')
+let wichRoute = ref('')
 let searchItem = ref('')
 const route = useRoute()
 const globalStore = useGlobalStore()
-const cardapioState = useCardapioStore()
+const carteState = useCardapioStore()
 
 onMounted(async () => {
 
-    if(!cardapioState.lanche.length){
-        cardapioState.lanche = await cardapioState.fetchAlimentoCategoria('/lanches')
-        cardapioState.bebida = await cardapioState.fetchAlimentoCategoria('/bebidas')
-        cardapioState.combo = await cardapioState.fetchAlimentoCategoria('/combos')
-        cardapioState.pratoPrincipal = await cardapioState.fetchAlimentoCategoria('/prato-principal')
-        cardapioState.pratoFrio = await cardapioState.fetchAlimentoCategoria('/prato-frio')
-        cardapioState.promocao = await cardapioState.fetchAlimentoCategoria('/promocao')
+    if(!carteState.lanche.length){
+        carteState.lanche = await carteState.fetchAlimentoCategoria('/lanches')
+        carteState.bebida = await carteState.fetchAlimentoCategoria('/bebidas')
+        carteState.combo = await carteState.fetchAlimentoCategoria('/combos')
+        carteState.pratoPrincipal = await carteState.fetchAlimentoCategoria('/prato-principal')
+        carteState.pratoFrio = await carteState.fetchAlimentoCategoria('/prato-frio')
+        carteState.promocao = await carteState.fetchAlimentoCategoria('/promocao')
     }
 
     window.scrollTo(0, 0)
 
     if(route.params.nome != 'promocao') {
-        tituloRota.value = 'Promoção'
+        wichRoute.value = 'Promoção'
         searchItem.value = globalStore.refeicaoPagePrincipal
     }else{
-        tituloRota.value = 'Cardápio'
+        wichRoute.value = 'Cardápio'
     }
 })
 
 function trocaRota() {
     if(route.params.nome != 'promocao'){
-        tituloRota.value = 'Cardápio'
+        wichRoute.value = 'Cardápio'
         router.push('cardapio/promocao')
     }else {
-        tituloRota.value = 'Promoção'
+        wichRoute.value = 'Promoção'
         router.push('/cardapio')
     }
 }

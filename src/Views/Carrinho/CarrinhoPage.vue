@@ -1,6 +1,6 @@
 <template>
-    <v-container v-if="itensCarrinho.length > 0">
-        <v-list v-for="(item, index) in itensCarrinho" :key="item.nome">
+    <v-container v-if="itensCart.length > 0">
+        <v-list v-for="(item, index) in itensCart" :key="item.nome">
             <v-card class="pa-0">
                 <v-row class="vertical-centro pa-2">
                     <v-col cols="1">
@@ -9,26 +9,23 @@
                         </v-avatar>
                     </v-col>
                     <v-col cols="2">
-                        Item:  {{ item.nome }}
+                        Item: {{ item.nome }}
                     </v-col>
                     <v-col cols="2">
-                        Valor:  R$ {{ (item.valor * item.qnt).toFixed(2) }}
+                        Valor: R$ {{ (item.valor * item.qnt).toFixed(2) }}
                     </v-col>
                     <v-col cols="2">
                         text-qualquer
                     </v-col>
                     <v-col cols="3" class="text-center">
-                        <v-btn 
-                            density="comfortable" @click="(retira(index, item))" 
-                            :disabled="item.qnt === 0"
-                        >
+                        <v-btn density="comfortable" @click="(removeOneItem(index, item))" :disabled="item.qnt === 0">
                             <v-icon>mdi-minus</v-icon>
                         </v-btn>
 
-                            Quantidade:  {{ item.qnt }}
+                        Quantidade: {{ item.qnt }}
 
 
-                        <v-btn density="comfortable" @click="(adiciona(index))">
+                        <v-btn density="comfortable" @click="(addOneItem(index))">
                             <v-icon>mdi-plus</v-icon>
                         </v-btn>
 
@@ -37,21 +34,25 @@
 
 
                     <v-col cols="2" class="text-center">
-                        <v-btn 
-                        @click="remover(item)" block variant="outlined" class="letra"
-                    >
+                        <v-btn @click="removeAllItems(item)" block variant="outlined" class="letra">
                             Remover todos itens
                         </v-btn>
                     </v-col>
                 </v-row>
             </v-card>
         </v-list>
-        <section class="text-end">
-            Valor total: <span class="letra">{{ carrinhoStore.precoStore.toFixed(2) }}</span>
-        </section>
+        <v-row class="mt-1">
+            <v-col cols="3" offset="9">
+                <v-card>
+                    <section class="text-center pa-2">
+                        <span class="description-letter">Valor total:</span> <strong class="value-letter">R$ {{ shoppCartStore.precoStore.toFixed(2) }}</strong>
+                    </section>
+                </v-card>
+            </v-col>
+        </v-row>
     </v-container>
     <v-container v-else>
-        <carrinho-vazio-page/>
+        <carrinho-vazio-page />
     </v-container>
 </template>
 
@@ -60,35 +61,34 @@ import { useCarrinhoCompras } from '@/stores/CarrinhoCompras'
 import { computed, onMounted } from 'vue'
 import CarrinhoVazioPage from './Partials/CarrinhoVazioPage.vue'
 
-const carrinhoStore = useCarrinhoCompras()
-const itensCarrinho = computed(() => carrinhoStore.carrinhoDeCompras)
+const shoppCartStore = useCarrinhoCompras()
+const itensCart = computed(() => shoppCartStore.carrinhoDeCompras)
 
 
-function remover(item){
-    const indexItemExcluir = itensCarrinho.value.findIndex( (carrinho) => carrinho.id === item.id)
+function removeAllItems(item) {
+    const indexItemDeleted = itensCart.value.findIndex((carrinho) => carrinho.id === item.id)
 
-    if(indexItemExcluir !== -1){
-        carrinhoStore.precoStore -= (item.valor * item.qnt)
-        carrinhoStore.itensQnt -= item.qnt
-        carrinhoStore.carrinhoDeCompras.splice(indexItemExcluir, 1)
+    if (indexItemDeleted !== -1) {
+        shoppCartStore.precoStore -= (item.valor * item.qnt)
+        shoppCartStore.itensQnt -= item.qnt
+        shoppCartStore.carrinhoDeCompras.splice(indexItemDeleted, 1)
     }
 }
 
-function retira(index, item){
-    
-    carrinhoStore.carrinhoDeCompras[index].qnt -= 1
-    carrinhoStore.precoStore -= carrinhoStore.carrinhoDeCompras[index].valor
-    carrinhoStore.itensQnt -= 1
-    
-    if(item.qnt === 0){
-        remover(item)
+function removeOneItem(index, item) {
+    shoppCartStore.carrinhoDeCompras[index].qnt -= 1
+    shoppCartStore.precoStore -= shoppCartStore.carrinhoDeCompras[index].valor
+    shoppCartStore.itensQnt -= 1
+
+    if (item.qnt === 0) {
+        removeAllItems(item)
     }
 }
 
-function adiciona(index) {
-    carrinhoStore.carrinhoDeCompras[index].qnt += 1
-    carrinhoStore.precoStore += carrinhoStore.carrinhoDeCompras[index].valor
-    carrinhoStore.itensQnt += 1
+function addOneItem(index) {
+    shoppCartStore.carrinhoDeCompras[index].qnt += 1
+    shoppCartStore.precoStore += shoppCartStore.carrinhoDeCompras[index].valor
+    shoppCartStore.itensQnt += 1
 }
 
 onMounted(() => {
@@ -98,6 +98,15 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.description-letter {
+    font-size: 18px;
+}
+
+.value-letter {
+    color: #da7b08;
+    font-size: 18px;
+    text-decoration: underline;
+}
 .letra {
     color: #da7b08;
 }

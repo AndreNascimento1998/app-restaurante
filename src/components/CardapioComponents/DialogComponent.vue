@@ -17,22 +17,26 @@
                     <v-card-text>
                         {{ props.descricao }}
                     </v-card-text>
-                    <p class="text-center py-10 texto-carrinho">Valor dos itens: {{ valorModal.toFixed(2) }}</p>
+                    <p class="text-center py-10 texto-carrinho">Valor dos itens: {{ valueModal.toFixed(2) }}</p>
                     <v-card-actions class="footer-text">
                         <v-spacer />
                         <v-card class="pa-0 mr-5">
-                            <v-btn @click="() => contadorMenos()">
+                            <v-btn @click="() => countMinus()" :disabled="countPortion === 1">
                                 <v-icon>mdi-minus</v-icon>
                             </v-btn>
-                            {{ contadorPorcao }}
-                            <v-btn @click="() => contadorPorcao += 1">
+                            {{ countPortion }}
+                            <v-btn @click="() => countPortion += 1">
                                 <v-icon>mdi-plus</v-icon>
                             </v-btn>
                         </v-card>
-                        <v-btn class="letra" variant="text" @click="cancelar">
+                        <v-btn class="letra" variant="text" @click="cancel">
                             Cancelar
                         </v-btn>
-                        <v-btn class="letra" variant="text" @click="adicionar">
+                        <v-btn 
+                            class="letra" 
+                            variant="text" 
+                            @click="globalStore.isLog ? addItems() : router.push('/login')"
+                        >
                             Adicionar
                         </v-btn>
                     </v-card-actions>
@@ -43,13 +47,16 @@
 </template>
 
 <script setup>
+import router from "@/router";
 import { useCarrinhoCompras } from "@/stores/CarrinhoCompras";
+import { useGlobalStore } from "@/stores/GlobalStore";
 import { computed, ref } from "vue";
 import { defineProps } from 'vue';
 
-const carrinhoComprasStore = useCarrinhoCompras()
+const globalStore = useGlobalStore()
+const shopCartStore = useCarrinhoCompras()
 let dialog = ref(false)
-let contadorPorcao = ref(1)
+let countPortion = ref(1)
 
 const props = defineProps({
     nome: String,
@@ -59,49 +66,59 @@ const props = defineProps({
     valor: Number,
 })
 
-const valorModal = computed(() => props.valor * contadorPorcao.value)
+const valueModal = computed(() => props.valor * countPortion.value)
+ 
+function addItems() {
+    const itemAtual = shopCartStore.carrinhoDeCompras.find( item => item.id === props.id)
+    
+    verifyItem(itemAtual)
+    
+    const {total, totalItems} = addValuesForPrecoStore()
 
-function adicionar() {
+    shopCartStore.precoStore = total
+    shopCartStore.itensQnt = totalItems
+    countPortion.value = 1
+    dialog.value = false
+}
+
+function addValuesForPrecoStore() {
     let total = 0
-    let totalItens = 0
+    let totalItems = 0
 
-    const itemAtual = carrinhoComprasStore.carrinhoDeCompras.find( item => item.id === props.id)
-    
-    if(itemAtual === undefined){
-    carrinhoComprasStore.carrinhoDeCompras.push({
-        id: props.id,
-        nome: props.nome,
-        descricao: props.descricao,
-        src: props.src,
-        valor: props.valor,
-        qnt: contadorPorcao.value
-    })} else{
-        const index = carrinhoComprasStore.carrinhoDeCompras.findIndex ( item => item.id === props.id)
-        carrinhoComprasStore.carrinhoDeCompras[index].qnt += contadorPorcao.value
-    }
-    
-    carrinhoComprasStore.carrinhoDeCompras.forEach(item => {
+    shopCartStore.carrinhoDeCompras.forEach(item => {
         total += item.valor * item.qnt
-        totalItens += item.qnt
-    });
+        totalItems += item.qnt
+    })
 
-    carrinhoComprasStore.precoStore = total
-    carrinhoComprasStore.itensQnt = totalItens
-    contadorPorcao.value = 1
-    dialog.value = false
-}
-
-function cancelar() {
-    contadorPorcao.value = 1
-    dialog.value = false
-}
-
-function contadorMenos() {
-    if(contadorPorcao.value > 1){
-        contadorPorcao.value -= 1
+    return {
+        total, 
+        totalItems
     }
 }
 
+function verifyItem(itemAtual) {
+    if(itemAtual === undefined){
+        shopCartStore.carrinhoDeCompras.push({
+            id: props.id,
+            nome: props.nome,
+            descricao: props.descricao,
+            src: props.src,
+            valor: props.valor,
+            qnt: countPortion.value
+    })} else{
+        const index = shopCartStore.carrinhoDeCompras.findIndex ( item => item.id === props.id)
+        shopCartStore.carrinhoDeCompras[index].qnt += countPortion.value
+    }
+}
+
+function cancel() {
+    countPortion.value = 1
+    dialog.value = false
+}
+
+function countMinus() {
+    countPortion.value -= 1
+}
 
 </script>
 
