@@ -50,10 +50,7 @@
                 :searchItem="searchItem"
                 :itemProcurado="cardapioState.bebida"
             />
-
-
         </span>
-
         
         <span v-if="route.params.nome == 'promocao'">
             <card-filter-component 

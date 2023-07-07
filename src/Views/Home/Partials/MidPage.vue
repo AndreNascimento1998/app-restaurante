@@ -7,12 +7,12 @@
                     cover>
                 </v-img>
                 <v-card-text>
-                    <div>Aqui você tem promoções especiais todos os dias!</div>
+                    <div>Reserve Seu lugar aqui, sem se preocupar depois!</div>
                 </v-card-text>
 
                 <v-card-actions>
                     <v-btn block variant="outlined" class="letra">
-                        Veja as Promoções
+                        Faça já sua reserva
                     </v-btn>
                 </v-card-actions>
             </v-card>
