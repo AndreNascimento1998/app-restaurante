@@ -4,7 +4,8 @@ import { ref } from "vue";
 export const useGlobalStore = defineStore('global', () => {
     let tema = ref('light')
     const refeicaoPagePrincipal = ref('')
-    const isLog = ref(false)
+    //trocar depois
+    const isLog = ref(true)
 
     function trocaTema() {
         if(tema.value === 'light') {
