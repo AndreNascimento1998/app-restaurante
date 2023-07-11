@@ -3,10 +3,10 @@
         <v-col>
             <v-dialog class="cor-de-fundo" transition="dialog-bottom-transition" width="auto">
                 <template v-slot:activator="{ props }">
-                    <v-btn class="botao-cadastrar" block variant="outlined" v-bind="props">Cadastrar-se</v-btn>
+                    <v-btn block variant="outlined" v-bind="props">Cadastrar-se</v-btn>
                 </template>
                 <template v-slot:default="{ isActive }">
-                    <v-card class="cor-de-fundo-dialog " width="400px">
+                    <v-card class="cor-de-fundo-dialog " width="600px">
                         <v-toolbar color="#da7b08" title="Cadastro rápido" />
                         <v-form @submit.prevent ref="form">
                             <v-row class="pa-4">
@@ -14,7 +14,7 @@
                                     <v-text-field
                                         label="E-mail" 
                                         density="compact" 
-                                        variant="underlined"
+                                        variant="filled"
                                         placeholder="aaaaa_14@ig.com"
                                         persistent-placeholder
                                         :rules="emailRules"
@@ -24,7 +24,7 @@
                                     <v-text-field 
                                         label="Senha" 
                                         density="compact" 
-                                        variant="underlined"
+                                        variant="filled"
                                         type="password"
                                         placeholder="AAAaaa111"
                                         persistent-placeholder
@@ -36,7 +36,7 @@
                                     <v-text-field 
                                         label="Telefone" 
                                         density="compact" 
-                                        variant="underlined"
+                                        variant="filled"
                                         placeholder="(62) 77777-7777"
                                         persistent-placeholder
                                         :rules="phoneRules"
@@ -47,11 +47,11 @@
                         </v-form>
                             
                             <v-col cols="10" offset="1">
-                                <v-btn block color="#da7b08" variant="outlined" @click="register(isActive)">Confirmar</v-btn>
+                                <v-btn block variant="outlined" @click="register(isActive)">Confirmar</v-btn>
                             </v-col>
                             
                             <v-col cols="10" offset="1">
-                                <v-btn block class="botao-cadastrar" variant="outlined" @click="isActive.value = false">Cancelar</v-btn>
+                                <v-btn block variant="outlined" @click="isActive.value = false">Cancelar</v-btn>
                             </v-col>
                             
                         </v-card>
@@ -95,13 +95,6 @@ async function register(isActive) {
 </script>
 
 <style scoped>
-.botao-cadastrar {
-    color: white;
-}
-
-.botao-cadastrar:hover {
-    color: #d97b08;
-}
 
 .cor-de-fundo {
     background-color:  rgba(0, 0, 0, 0.7);
@@ -109,7 +102,7 @@ async function register(isActive) {
 }
 
 .cor-de-fundo-dialog {
-    background-color: #20201f;
-    color: white;
+    background-color: #ededed;
+    color: rgb(0, 0, 0);
 }
 </style>

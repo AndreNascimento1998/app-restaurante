@@ -38,6 +38,11 @@ const routes = [
                 path: '/combo-editar',
                 name: 'editorCombo',
                 component: () => import('@/Views/CarteEdit/ComboPage.vue')
+            },
+            {
+                path: '/lanche-editar',
+                name: 'editorLanche',
+                component: () => import('@/Views/CarteEdit/LanchePage.vue')
             }
         ]
     },

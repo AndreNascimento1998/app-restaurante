@@ -11,12 +11,13 @@
                 @click="item.action"
                 :prepend-icon="item.icon" 
                 :title="item.title"
-                class="letra-cor" 
+                class="letter-color"
             />
             
-            <v-list-group v-else class="letra-cor" value="menuData">
+            <v-list-group v-else value="menuData">
                 <template v-slot:activator="{ props }">
                     <v-list-item
+                        class="letter-color"
                         v-bind="props" 
                         :title="item.title" 
                         :prepend-icon="item.icon" 
@@ -24,6 +25,7 @@
                 </template>
                 <v-list-item 
                     v-for="(sub, index) in item.subItems" 
+                    class="letter-color"
                     @click="outherPage(sub)"
                     :key="index" 
                     :title="sub.title" 
@@ -70,7 +72,7 @@ const menuItemsCarte = computed(() => {
             {
                 title: 'Combos', 
                 icon: 'mdi-food',
-                to: '/cardapio'
+                to: '/combo-editar'
             },
             {
                 title: 'Pratos Principais',
@@ -85,7 +87,7 @@ const menuItemsCarte = computed(() => {
             {
                 title: 'Lanches',
                 icon: 'mdi-hamburger',
-                to: '/cardapio'
+                to: '/lanche-editar'
             },
             {
                 title: 'Bebidas',
@@ -103,9 +105,13 @@ function outherPage(rota){
 </script>
 
 <style>
-.letra-cor {
+.letter-color {
     color: #da7b08;
     cursor: pointer;
+}
+
+.letter-color:hover {
+    color: #2eae17;
 }
 
 .v-list-item--density-compact.v-list-item--one-line {

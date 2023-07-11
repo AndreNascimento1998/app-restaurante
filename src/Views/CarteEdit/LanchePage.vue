@@ -1,8 +1,8 @@
 <template>
     <v-container>
         <data-table 
-            :desserts="carteStore.combo"
-            title="Combos"
+            :desserts="carteStore.lanche"
+            title="Lanches"
         />
     </v-container>
 </template>
@@ -15,6 +15,6 @@ import { onMounted } from 'vue'
 const carteStore = useCardapioStore()
 
 onMounted(async () => {
-    carteStore.combo = await carteStore.fetchAlimentoCategoria('/combos')
+    carteStore.lanche = await carteStore.fetchAlimentoCategoria('/lanches')
 })
 </script>

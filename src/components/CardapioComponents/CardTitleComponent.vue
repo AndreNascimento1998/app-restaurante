@@ -1,18 +1,44 @@
 <template>
     <v-sheet v-show="comboFilter?.length == 0 ? false : true" class="mx-auto" elevation="8" max-width="1200">
         <h2 style="font-style: italic;" class="letra pa-2">COMBOS</h2>
-        <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="item in comboFilter" :key="item" v-slot="{ isSelected, selectedClass }">
+
+        <v-slide-group 
+            class="pa-4" 
+            selected-class="bg-success" 
+            show-arrows
+        >
+            <v-slide-group-item 
+                v-for="item in comboFilter" 
+                :key="item" 
+                v-slot="{ isSelected, selectedClass }"
+            >
                 <v-card :class="['ma-4', selectedClass]" height="350" width="350">
-                    <v-img class="promocao text-white" width="350"  :src="item.url" cover />
+                    <v-img 
+                        class="promocao text-white" 
+                        width="350"  
+                        :src="item.url" 
+                        cover 
+                    />
                     <v-scale-transition>
-                        <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
+                        <v-icon 
+                            v-if="isSelected" 
+                            color="white" 
+                            size="48" 
+                            icon="mdi-close-circle-outline" 
+                        />
                     </v-scale-transition>
                     <v-card-title class="mb-5">
                         {{ item.nome }}
                     </v-card-title>
                     <v-card-text>
-                        <span>{{ item.descricao.slice(0, 91) }} </span> <span v-if="item.descricao.length > 91">...</span>
+                        <span>
+                            {{ item.descricao.slice(0, 91) }} 
+                        </span> 
+                        <span 
+                            v-if="item.descricao.length > 91"
+                        >
+                            ...
+                        </span>
                     </v-card-text> 
                     <v-card-actions>
                         <dialog-component 

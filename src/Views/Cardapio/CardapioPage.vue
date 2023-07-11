@@ -6,7 +6,7 @@
                     v-model="searchItem" 
                     hide-details="auto" 
                     label="Buscar" 
-                    variant="underlined"
+                    variant="filled"
                     prepend-icon="mdi-magnify" 
                     density="compact"
                     clearable
@@ -14,7 +14,7 @@
             </v-col>
             
             <v-col class="mt-1" cols="6">
-                <v-btn @click="trocaRota()" block class="letra" variant="outlined" >
+                <v-btn @click="trocaRota()" block class="letra"  variant="outlined" >
                     {{ wichRoute }}
                 </v-btn>
             </v-col>

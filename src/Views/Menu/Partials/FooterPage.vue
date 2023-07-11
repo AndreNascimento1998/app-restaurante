@@ -1,15 +1,22 @@
 
 <template>
-    <v-footer class=" flex-column">
-        <div class="bg-color d-flex w-100 align-center px-16 pa-2">
+    <v-footer class="flex-column">
+        <div class="bg-color d-flex w-100 align-center px-16 pa-2" col>
             <strong>Mantenha-se conectado com nossas redes sociais!</strong>
 
             <v-spacer />
 
-            <v-btn v-for="icon in icons" :key="icon" class="mx-4" :icon="icon" variant="plain" size="small"></v-btn>
+            <v-btn 
+                v-for="icon in icons" 
+                :key="icon" 
+                class="mx-4 icon" 
+                :icon="icon" 
+                variant="plain" 
+                size="small" 
+            />
         </div>
 
-        <div class="pa-4 bg-black w-100 cor-texto">
+        <div class="pa-4 bg-black w-100">
             <v-row class="pa-4 ml-16">
                 <v-col offset="2" cols="2">
                     <h4 class="curso">Food Chain Magnate</h4>
@@ -24,18 +31,18 @@
                     <p class="curso">Restaurantes Próximos</p>
                 </v-col>
                 <v-col cols="2">
-                    <h4>Delivery</h4>
-                    <h4>Quem somos nós</h4>
+                    <h4 class="curso">Delivery</h4>
+                    <h4 class="curso">Quem somos nós</h4>
                 </v-col>
                 <v-col cols="2">
-                    <h4>Fale Conosco</h4>
-                    <h4>Promoções</h4>
+                    <h4 class="curso">Fale Conosco</h4>
+                    <h4 class="curso">Promoções</h4>
                 </v-col>
             </v-row>
             <v-col cols="12 ml-6 px-16">
                 <v-divider />
             </v-col>
-            <h4 class="pa-1 px-16 ml-6">Copyright © 2022 Food Chain Magnate - Todos os direitos reservados</h4>
+            <h4 class="pa-1 px-16 ml-6" style="color:#da7b08;">Copyright © 2022 Food Chain Magnate - Todos os direitos reservados</h4>
         </div>
     </v-footer>
 </template>
@@ -52,34 +59,29 @@ const icons = [
 </script>
 
 <style scoped>
-.margem-segundo{
-    margin-left: 166px;
-}
-
-.margem-primeiro{
-    margin-left: 253px;
-}
 .bg-color {
     background-color: #b96600;
     color: black;
 }
 
-.cor-texto {
-    color: #da7b08 !important;
+.icon {
+    color: black;
+}
+
+.curso:hover {
+    color: #2eae17 !important;
 }
 
 .v-footer {
     padding: 0 !important;
-    height: 100%;
-    overflow-y: hidden;
+    height: 80%;
+    overflow: hidden !important;
     flex: 0 0 auto;
 }
 
 .curso {
     cursor: pointer !important;
+    color: #da7b08 !important;
 }
 
-.v-footer[data-v-5b0e8fde] {
-    overflow: hidden !important;
-}
 </style>

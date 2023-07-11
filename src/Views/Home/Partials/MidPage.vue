@@ -11,7 +11,7 @@
                 </v-card-text>
 
                 <v-card-actions>
-                    <v-btn block variant="outlined" class="letra">
+                    <v-btn block variant="outlined">
                         Faça já sua reserva
                     </v-btn>
                 </v-card-actions>
@@ -28,7 +28,7 @@
                 </v-card-text>
 
                 <v-card-actions>
-                    <v-btn @click="(() => router.push('/cardapio'))" block variant="outlined" class="letra">
+                    <v-btn @click="(() => router.push('/cardapio'))" block variant="outlined" >
                         Faça seu pedido
                     </v-btn>
                 </v-card-actions>
@@ -40,22 +40,22 @@
 
     <v-row class="mt-4 pa-4">
         <v-col cols="12">
-            <h2 style="font-style: italic;" class="letra">Lançamentos</h2>
+            <h2 style="font-style: italic;">Lançamentos</h2>
         </v-col>
         <v-col v-for="(prato, index) in plate" :key="index" cols="3">
 
             <v-hover v-slot="{ isHovering, props }">
                 <v-card class="mx-auto rounded-pill" v-bind="props">
 
-                    <v-img class="" :width="300" aspect-ratio="16/9" cover :src="prato.src">
+                    <v-img :width="300" aspect-ratio="16/9" cover :src="prato.src">
 
                         <v-expand-transition>
                             <div v-if="isHovering"
-                                class="d-flex transition-fast-in-fast-out bg-orange-darken-3 v-card--reveal text-h5"
+                                class="d-flex transition-fast-in-fast-out bg-color v-card--reveal"
                                 style="height:100%;">
                                 <v-row>
                                     <v-col offset="4" cols="12">
-                                        <p>Ver mais</p>
+                                        <p class="letter">Ver mais</p>
 
                                     </v-col>
                                     <v-col cols="6" offset="5">
@@ -72,7 +72,7 @@
 
     <v-row class="mt-6 pa-4">
         <v-col cols="12">
-            <h2 style="font-style: italic;" class="letra">Depoimentos</h2>
+            <h2 style="font-style: italic;">Depoimentos</h2>
         </v-col>
 
         <v-col v-for="(item, index) in testimony" :key="index"  cols="3">
@@ -117,8 +117,17 @@ function paginaCardapio(item) {
 </script>
 
 <style scoped>
-.letra {
-    color: #da7b08;
+
+.bg-color {
+    background-color: rgb(218, 123, 8, 0.8);
+    color: white;
+}
+
+.letter {
+    color: white;
+    font-size: 26px !important;
+    font-weight: 600;
+    font-style: oblique;
 }
 
 .letra-texto {
@@ -133,7 +142,6 @@ function paginaCardapio(item) {
     align-items: center;
     bottom: 8;
     justify-content: center;
-    opacity: .8;
     position: absolute;
     width: 100%;
 }

@@ -25,4 +25,16 @@ const globalStore = useGlobalStore()
     flex: 0 0 auto;
     margin: 0;
 }
+
+h2 {
+    color: #da7b08;
+}
+
+button.v-btn {
+    color: #da7b08;
+}
+
+button.v-btn:hover {
+    color: #2eae17;
+}
 </style>

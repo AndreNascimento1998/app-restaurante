@@ -23,7 +23,7 @@
                             <v-col cols="6" class="cor-2 pa-0">
 
                                 <v-card-title class="pa-4 mt-8 mb-8 text-center letra">
-                                    Food Chain Magnate
+                                    <span>Food</span><span class="mr-1 ml-1 letter-secondary ">Chain</span><span>Magnate</span>
                                 </v-card-title>
 
                                 <v-col cols="8" offset="2" class="pa-0">
@@ -42,15 +42,15 @@
                                     />
                                 </v-col>
 
-                                <v-col cols="8" offset="2" class="cor-botao mb-8 mt-4 pa-0">
+                                <v-col cols="8" offset="2" class="mb-8 mt-4 pa-0">
                                     <v-btn @click="router.push('/inicio')" block variant="outlined" >
                                         Entrar
                                     </v-btn>
                                     <span class="letra-esqueceu-senha">Esqueceu senha ?</span>
                                 </v-col>
 
-                                <v-col cols="8" offset="2" class="botao-cadastrar mb-10 pa-0">
-                                    <dialog-login-component />
+                                <v-col cols="8" offset="2" class="mb-10 pa-0">
+                                    <register-page />
                                 </v-col>
                             </v-col>
                         </v-row>
@@ -63,7 +63,7 @@
 
 <script setup>
 import router from "@/router";
-import DialogLoginComponent from "@/Views/Login/Partials/RegisterPage.vue";
+import RegisterPage from "@/Views/Login/Partials/RegisterPage.vue";
 
 </script>
 
@@ -98,19 +98,22 @@ import DialogLoginComponent from "@/Views/Login/Partials/RegisterPage.vue";
     margin-left:1.5%;
 }
 
-.letra {
-    color: #da7b08;
+.letter-secondary {
+    color: #2eae17;
 }
 
-.cor-botao {
-    color:#da7b08 ;
+.letra {
+    color: #da7b08;
 }
 
 .letra-esqueceu-senha{
     font-size: 12px;
     font-style: italic;
     cursor: pointer;
+    color: #da7b08;
 }
 
-
+.letra-esqueceu-senha:hover {
+    color: #2eae17;
+}
 </style>
