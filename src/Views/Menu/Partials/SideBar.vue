@@ -1,7 +1,7 @@
 <template>
     <v-navigation-drawer v-model="sideMenu"  expand-on-hover elevation="1" rail permanent class="py-2">
         <v-list 
-            v-for="(item, index) in globalStore.isLog ? menuItemsCarte : menuItems" 
+            v-for="(item, index) in globalStore.isAdm ? menuItemsCarte : menuItems" 
             :key="index" 
             density="compact" 
             nav

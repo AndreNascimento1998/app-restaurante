@@ -33,6 +33,11 @@ const routes = [
                 path: '/carrinho',
                 name: 'carrinho',
                 component: () => import('@/Views/Carrinho/CarrinhoPage.vue')
+            },
+            {
+                path: '/combo-editar',
+                name: 'editorCombo',
+                component: () => import('@/Views/CarteEdit/ComboPage.vue')
             }
         ]
     },
