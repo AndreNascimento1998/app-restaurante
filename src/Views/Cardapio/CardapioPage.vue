@@ -22,16 +22,16 @@
         
             <span v-if="route.params.nome != 'promocao'">
              <card-title-component 
-                class="mt-9"
-                :combos="carteState.combo"
-                :searchItem="searchItem"
+                    class="mt-9"
+                    :combos="carteState.combo"
+                    :searchItem="searchItem"
                 />
              
-                <card-filter-component 
+            <card-filter-component 
                 title="Pratos Principais"
                 :searchItem="searchItem"
                 :wantedItem="carteState.pratoPrincipal"
-                />
+            />
 
             <card-filter-component 
                 title="Pratos Frios"
