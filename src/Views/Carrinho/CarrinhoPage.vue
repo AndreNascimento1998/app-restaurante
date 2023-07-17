@@ -51,9 +51,9 @@
             </v-col>
         </v-row>
     </v-container>
-    <v-container v-else>
+    <div v-else>
         <carrinho-vazio-page />
-    </v-container>
+    </div>
 </template>
 
 <script setup>

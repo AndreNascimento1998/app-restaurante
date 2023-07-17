@@ -66,8 +66,8 @@
 <script setup>
 import { useCardapioStore } from "@/stores/CardapioStore";
 import {  onMounted, onUnmounted, ref } from "vue";
-import CardFilterComponent from "@/components/CardapioComponents/CardFilterComponent.vue";
-import CardTitleComponent from "@/components/CardapioComponents/CardTitleComponent.vue";
+import CardFilterComponent from "@/components/card/CardFilterComponent.vue";
+import CardTitleComponent from "@/components/card/CardTitleComponent.vue";
 import { useRoute } from "vue-router";
 import router from "@/router";
 import { useGlobalStore } from "@/stores/GlobalStore";

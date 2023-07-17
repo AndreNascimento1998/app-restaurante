@@ -1,58 +1,75 @@
 <template>
-    <v-parallax class="borda"
-        src="https://img.freepik.com/fotos-premium/uma-variedade-de-pratos-estao-em-exibicao-no-restaurante_900775-11515.jpg?w=2000"
-        >
-        <v-row v-if="globalStore.isLog" class="cor-fundo cor pa-2">
-            <v-col cols="5">
-                <span class="letra">Ver reservas! </span>
-                <span class="mt-4">
-                    <v-btn block variant="outlined">
-                        Ir à reservas
-                    </v-btn>
-                </span>
-            </v-col>
-            <v-col cols="2" class="text-center">
-                <v-icon size="70px">mdi-cart-off</v-icon>
-                <p class="letra">Carrinho Vazio!</p>
-            </v-col>
-            <v-col cols="5">
-                <span class="mt-4">
-                    <p class="letra">Carrinho Vazio!</p>
-                    <v-btn block variant="outlined">
-                        Ir à loja
-                    </v-btn>
-                </span>
-            </v-col>
-        </v-row>
-        <v-row v-else>
-            <v-col>
-                dsdas
-            </v-col>
-        </v-row>
-    </v-parallax>
+    <v-hover v-if="globalStore.isLog" v-slot="{ props }">
+        <v-card class="" v-bind="props">
+            <v-img
+                src="https://img.freepik.com/fotos-premium/uma-variedade-de-pratos-estao-em-exibicao-no-restaurante_900775-11515.jpg?w=2000">
+                <v-expand-transition>
+                    <div class="d-flex transition-fast-in-fast-out color-fund v-card--reveal" style="height:100%;">
+                        <v-row class="mt-4">
+                            <v-col cols="12" class="color">
+                                <card-img-component 
+                                    :src="cardImg.src" 
+                                    :desc="cardImg.desc" 
+                                    :textButton="cardImg.textButton"
+                                    :nextRoute="cardImg.nextRoute" 
+                                />
+                            </v-col>
+                        </v-row>
+                    </div>
+                </v-expand-transition>
+            </v-img>
+        </v-card>
+    </v-hover>
 </template>
 
 <script setup>
 import { useGlobalStore } from "@/stores/GlobalStore";
+import CardImgComponent from "@/components/card/CardImgComponent.vue"
+import { reactive } from "vue";
 
 const globalStore = useGlobalStore()
+const cardImg = reactive({
+    src: 'https://s1.1zoom.me/big0/260/The_second_dishes_Pasta_507866.jpg',
+    desc: 'Não perca tempo compre já ou reserve!',
+    textButton: 'Visitar o cardápio',
+    nextRoute: '/cardapio'
+})
+
 
 </script>
 
 <style scoped>
-.cor {
-    color: #da7b08;
+.letter-img2 {
+    font-size: 15px;
+    color: rgb(39, 39, 39);
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
 }
 
-.letra {
-    font-size: 20px !important;
+.letter-img {
+    font-size: 15px;
+    font-style: italic;
 }
 
-.borda{
+.color {
+    color: #0f0f0f;
+}
+
+.line {
+    display: flex;
+    align-items: center;
+
+}
+
+
+.borda {
     border-radius: 5px;
 }
-.cor-fundo {
-    background-color: rgba(7, 7, 7, 0.7);
+
+.color-fund {
+    background-color: rgba(153, 158, 153, 0.8);
     border-style: inset;
 }
 </style>
