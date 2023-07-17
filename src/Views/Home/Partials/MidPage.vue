@@ -7,12 +7,12 @@
                     cover>
                 </v-img>
                 <v-card-text>
-                    <div>Reserve Seu lugar aqui, sem se preocupar depois!</div>
+                    <div>Cadastre-se e comece a comprar!</div>
                 </v-card-text>
 
                 <v-card-actions>
                     <v-btn block variant="outlined">
-                        Faça já sua reserva
+                        Faça seu login
                     </v-btn>
                 </v-card-actions>
             </v-card>

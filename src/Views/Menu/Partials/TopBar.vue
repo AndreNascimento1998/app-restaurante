@@ -5,26 +5,27 @@
                 <v-img src="https://static.vecteezy.com/system/resources/previews/014/971/638/non_2x/food-logo-design-template-restaurant-free-png.png" height="90"/>
             </v-toolbar-title>
         </v-col>
-        <h2>Food </h2><h2 class="collor-secondary mr-1 ml-1">Chain</h2><h2>Magnate</h2>
-        
+        <h2>Food </h2><h2 class="color-secondary mr-1 ml-1">Chain</h2><h2>Magnate</h2>
         <v-spacer />
+
         <span>
-            <v-icon class="collor-principal" style="cursor: pointer;" size="35px" @click="(() => router.push('/carrinho'))">mdi-shopping</v-icon>
+            <v-icon class="color-principal" size="35px" @click="(() => router.push('/carrinho'))">mdi-shopping</v-icon> 
         </span>
-        <span class="cartShop-letter margin-right">R$ {{ Math.abs(priceCart).toFixed(2) }} <p>itens: {{ itemsQuantity }}</p></span>
+        <span class="cartShop-letter  mr-7">R$ {{ Math.abs(priceCart).toFixed(2) }} <p>itens: {{ itemsQuantity }}</p></span>
         <v-menu left bottom>
             <template #activator="{ props }">
                 <v-btn icon v-bind="props">
-                    <v-icon class="collor-principal" size="35px">mdi-account-circle</v-icon>
+                    <v-icon class="color-principal" size="35px">mdi-account-circle</v-icon>
                 </v-btn>
             </template>
 
             <v-list>
                 <v-list-item v-for="(option, i) in options" :key="i" @click="option.action">
-                    <v-list-item-title class="collor-principal" ><v-icon > {{ option.icon }} </v-icon>  {{ option.text }}</v-list-item-title>
+                    <v-list-item-title class="color-principal" ><v-icon > {{ option.icon }} </v-icon>  {{ option.text }}</v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-menu>
+        
     </v-app-bar>
 </template>
 
@@ -57,20 +58,17 @@ const options = ref([
 </script>
 
 <style scoped>
-.margin-right {
-    margin-right: 50px;
-}
 
-.collor-principal {
+.color-principal {
     color: #da7b08;
 }
 
 
-.collor-principal:hover{
+.color-principal:hover{
     color: #2eae17;
 }
 
-.collor-secondary{
+.color-secondary{
  color: #2eae17;
 }
 

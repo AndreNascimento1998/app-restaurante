@@ -67,7 +67,7 @@ const menuItemsCarte = computed(() => {
             {
                 title: 'Promoções', 
                 icon: 'mdi-food',
-                to: '/cardapio'
+                to: '/promocao-editar'
             },
             {
                 title: 'Combos', 
@@ -77,12 +77,12 @@ const menuItemsCarte = computed(() => {
             {
                 title: 'Pratos Principais',
                 icon: 'mdi-noodles',
-                to: '/cardapio'
+                to: '/prato-principal-editar'
             },
             {
                 title: 'Pratos Frios',
                 icon: 'mdi-peanut',
-                to: '/cardapio'
+                to: '/prato-frio-editar'
             },
             {
                 title: 'Lanches',
@@ -92,7 +92,7 @@ const menuItemsCarte = computed(() => {
             {
                 title: 'Bebidas',
                 icon: 'mdi-glass-wine',
-                to: '/cardapio'
+                to: '/bebida-editar'
             }
         ]},
     ]

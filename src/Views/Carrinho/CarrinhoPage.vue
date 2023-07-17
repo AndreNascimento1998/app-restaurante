@@ -44,9 +44,9 @@
         <v-row class="mt-1">
             <v-col cols="3" offset="9">
                 <v-card>
-                    <section class="text-center pa-2">
-                        <span class="description-letter">Valor total:</span> <strong class="value-letter">R$ {{ shoppCartStore.precoStore.toFixed(2) }}</strong>
-                    </section>
+                    <v-btn block variant="outlined">
+                        Confirmar: R$ {{ shoppCartStore.precoStore.toFixed(2) }}
+                    </v-btn>
                 </v-card>
             </v-col>
         </v-row>
