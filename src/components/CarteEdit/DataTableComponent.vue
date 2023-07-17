@@ -27,6 +27,7 @@
         v-model:items-per-page="itemsPerPage"
         :headers="headers"
         :items="desserts"
+        density="compact"
         hover
         :search="searchItem"
         item-value="name"
@@ -37,11 +38,11 @@
         <!-- eslint-disable-next-line vue/valid-v-slot -->
         <template v-slot:item.valor="{ item }">R$ {{item.raw.valor.toFixed(2) }}</template>
         <!-- eslint-disable-next-line vue/valid-v-slot -->
-        <template v-slot:item.descricao="{ item }">{{item.raw.descricao.slice(0,90) }} <span v-if="item.raw.descricao.length > 90">...</span></template>
+        <template v-slot:item.descricao="{ item }">{{item.raw.descricao.slice(0,180) }} <span v-if="item.raw.descricao.length > 180">...</span></template>
         <!-- eslint-disable-next-line vue/valid-v-slot -->
         <template v-slot:item.opcao="{ item }">
-                <v-icon class="mr-1" @click="edit(item.raw)">mdi-file-edit</v-icon>
-                <v-icon @click="delet(item.raw)">mdi-delete</v-icon>
+                <v-icon class="mr-1" color="#da7b08" @click="edit(item.raw)">mdi-file-edit</v-icon>
+                <v-icon @click="delet(item.raw)" color="#da7b08" >mdi-delete</v-icon>
         </template>
     </v-data-table>
     
@@ -56,8 +57,8 @@ const searchItem = ref('')
 const headers = [
   { title: "Nome", align: "start",sortable: true, key: "nome" },
   { title: "Descrição", align: "start", key: "descricao" },
-  { title: "Valor", align: "start", key: "valor" },
-  { title: "Opções", align: "start", key: "opcao" },
+  { title: "Valor", align: "center", key: "valor" },
+  { title: "Opções", align: "end", key: "opcao" },
 ];
 
 const props = defineProps({
@@ -76,3 +77,6 @@ function delet(item) {
 }
 
 </script>
+
+<style scoped>
+</style>
