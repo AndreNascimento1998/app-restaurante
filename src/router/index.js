@@ -43,7 +43,28 @@ const routes = [
                 path: '/lanche-editar',
                 name: 'editorLanche',
                 component: () => import('@/Views/CarteEdit/LanchePage.vue')
+            },
+            {
+                path: '/promocao-editar',
+                name: 'editorPromocao',
+                component: () => import('@/Views/CarteEdit/PromocaoPage.vue')
+            },
+            {
+                path: '/prato-principal-editar',
+                name: 'editorPratoPrincipal',
+                component: () => import('@/Views/CarteEdit/PratoPrincipalPage.vue')
+            },
+            {
+                path: '/prato-frio-editar',
+                name: 'editorFrioPrincipal',
+                component: () => import('@/Views/CarteEdit/PratoFrioPage.vue')
+            },
+            {
+                path: '/bebida-editar',
+                name: 'editorBebida',
+                component: () => import('@/Views/CarteEdit/BebidaPage.vue')
             }
+            
         ]
     },
 ];
