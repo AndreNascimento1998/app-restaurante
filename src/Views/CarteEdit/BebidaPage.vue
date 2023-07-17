@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import DataTable from '@/components/CarteEdit/DataTableComponent.vue'
+import DataTable from '@/components/data-table/DataTableComponent.vue'
 import { useCardapioStore } from '@/stores/CardapioStore'
 import { onMounted } from 'vue'
 

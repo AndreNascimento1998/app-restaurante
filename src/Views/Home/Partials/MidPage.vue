@@ -1,38 +1,20 @@
 <template>
     <v-row class="text-center mt-10">
         <v-col cols="6">
-            <v-card density="compact" class="mx-auto" max-width="650">
-                <v-img class="align-end text-white" height="300"
-                    src="https://images.pexels.com/photos/6127316/pexels-photo-6127316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    cover>
-                </v-img>
-                <v-card-text>
-                    <div>Cadastre-se e comece a comprar!</div>
-                </v-card-text>
-
-                <v-card-actions>
-                    <v-btn block variant="outlined">
-                        Faça seu login
-                    </v-btn>
-                </v-card-actions>
-            </v-card>
+            <card-img-component 
+                :src="cardLogin.src"
+                :desc="cardLogin.desc"
+                :textButton="cardLogin.textButton"
+                :nextRoute="cardLogin.nextRoute"
+            />
         </v-col>
         <v-col cols="6">
-            <v-card density="compact" class="mx-auto" max-width="650">
-                <v-img class="align-end text-white" height="300"
-                    src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    cover>
-                </v-img>
-                <v-card-text>
-                    <div>Faça seu pedido, confira o cardápio e combos diários!</div>
-                </v-card-text>
-
-                <v-card-actions>
-                    <v-btn @click="(() => router.push('/cardapio'))" block variant="outlined" >
-                        Faça seu pedido
-                    </v-btn>
-                </v-card-actions>
-            </v-card>
+            <card-img-component 
+                :src="cardCardapio.src"
+                :desc="cardCardapio.desc"
+                :textButton="cardCardapio.textButton"
+                :nextRoute="cardCardapio.nextRoute"
+            />
         </v-col>
     </v-row>
 
@@ -102,12 +84,27 @@
 import router from '@/router';
 import { useGlobalStore } from '@/stores/GlobalStore';
 import { useHomeStore } from '@/stores/HomeStore';
-import { computed } from 'vue';
+import { computed, reactive } from 'vue';
+import CardImgComponent from '@/components/card/CardImgComponent.vue'
 
 const globalStore = useGlobalStore()
 const homeStore = useHomeStore()
 const plate = computed(() => homeStore.pratos)
 const testimony = computed(() => homeStore.depoimentos)
+
+const cardLogin = reactive({
+    src:"https://images.pexels.com/photos/6127316/pexels-photo-6127316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    desc:"Entre e comece a comprar os melhores pratos da cidade!",
+    textButton:"Cadastre-se agora!",
+    nextRoute:"/login"
+})
+
+const cardCardapio = reactive({
+    src:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    desc:"Faça seu pedido, confira o cardápio e combos diários!",
+    textButton:"Acesse agora!",
+    nextRoute:"/cardapio"
+})
 
 function paginaCardapio(item) {
     globalStore.refeicaoPagePrincipal = item.nome
