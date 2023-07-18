@@ -57,7 +57,7 @@ const menuItems = computed(() => {
 
 const menuItemsCarte = computed(() => {
     return [
-        { title: 'Início', icon: 'mdi-home', action: () => router.push('/inicio') },
+        { title: 'Início', icon: 'mdi-home', action: () => router.push('/') },
         { title: 'Cardápio', icon: 'mdi-food',  action: () => router.push('/cardapio')},
         { title: 'Promoções', icon: 'mdi-tag', action: ()   => router.push('/cardapio/promocao') },
         { title: 'Carrinho de Compras', icon: 'mdi-cart-check', action: () => router.push('/carrinho') },

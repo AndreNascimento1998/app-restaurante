@@ -43,7 +43,7 @@
                                 </v-col>
 
                                 <v-col cols="8" offset="2" class="mb-8 mt-4 pa-0">
-                                    <v-btn @click="router.push('/inicio')" block variant="outlined" >
+                                    <v-btn @click="router.push('/')" block variant="outlined" >
                                         Entrar
                                     </v-btn>
                                     <span class="letra-esqueceu-senha">Esqueceu senha ?</span>

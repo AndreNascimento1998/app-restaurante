@@ -1,6 +1,6 @@
 <template>
     <v-row class="text-center mt-10">
-        <v-col cols="6">
+        <v-col cols="12" sm="6">
             <card-img-component 
                 :src="cardLogin.src"
                 :desc="cardLogin.desc"
@@ -9,7 +9,8 @@
             />
         </v-col>
         <v-col cols="6">
-            <card-img-component 
+            <card-img-component
+                v-show="smAndUp"
                 :src="cardCardapio.src"
                 :desc="cardCardapio.desc"
                 :textButton="cardCardapio.textButton"
@@ -86,11 +87,14 @@ import { useGlobalStore } from '@/stores/GlobalStore';
 import { useHomeStore } from '@/stores/HomeStore';
 import { computed, reactive } from 'vue';
 import CardImgComponent from '@/components/card/CardImgComponent.vue'
+import { useDisplay } from 'vuetify/lib/framework.mjs';
 
 const globalStore = useGlobalStore()
 const homeStore = useHomeStore()
 const plate = computed(() => homeStore.pratos)
 const testimony = computed(() => homeStore.depoimentos)
+
+const { smAndUp } = useDisplay()
 
 const cardLogin = reactive({
     src:"https://images.pexels.com/photos/6127316/pexels-photo-6127316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",

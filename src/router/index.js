@@ -8,13 +8,13 @@ const routes = [
         component: () => import('@/Views/Login/LoginPage.vue')
     },
     {
-        path: '/',
+        path: '/toke-kensader',
         name: 'menu',
         component: () => import('@/Views/Menu/MenuPage.vue'),
         meta: { requiresAuth: true },
         children: [
             {
-                path: '/inicio',
+                path: '/',
                 name: 'home',
                 component: () => import('@/Views/Home/HomePage.vue'),
                 meta: { requireAuth: true },
