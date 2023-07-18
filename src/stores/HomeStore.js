@@ -2,25 +2,6 @@ import { defineStore } from "pinia";
 
 export const useHomeStore = defineStore('home', () => {
 
-    const pratos = [
-        {
-            nome: 'Yakisoba',
-            src: "https://s2.glbimg.com/sbY-7k1GbROb56FDTqj9XAEzIDQ=/e.glbimg.com/og/ed/f/original/2021/07/22/yakisoba.jpeg"
-        },
-        {
-            nome: 'Lámen',
-            src: "https://segredosdomundo.r7.com/wp-content/uploads/2020/02/lamen-tudo-sobre-essa-maravilha-gastronomica.jpg"
-        },
-        {
-            nome: 'Strogonofe',
-            src: "https://receitinhas.com.br/wp-content/uploads/2016/06/istock-1313903223.webp"
-        },
-        {
-            nome: 'Carne ao Molho Madeira',
-            src: "https://blog.cybercook.com.br/wp-content/uploads/2022/07/molho-madeira-legitimo-para-harmonizar-com-o-vinho-certo-scaled.jpeg"
-        }
-    ]
-
     const depoimentos = [
         {
             nome: 'Phantom Assassin',
@@ -45,7 +26,6 @@ export const useHomeStore = defineStore('home', () => {
     ]
 
     return {
-        pratos,
         depoimentos
     }
 })

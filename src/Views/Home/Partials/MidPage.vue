@@ -24,7 +24,7 @@
         <v-col cols="12">
             <h2 style="font-style: italic;">Lançamentos</h2>
         </v-col>
-        <v-col v-for="(prato, index) in plate" :key="index" cols="6" sm="3">
+        <v-col v-for="(prato, index) in plates" :key="index" cols="6" sm="3">
 
             <v-hover v-slot="{ isHovering, props }">
                 <v-card class="mx-auto rounded-pill" v-bind="props">
@@ -93,10 +93,27 @@ import { useDisplay } from 'vuetify/lib/framework.mjs';
 
 const globalStore = useGlobalStore()
 const homeStore = useHomeStore()
-const plate = computed(() => homeStore.pratos)
 const testimony = computed(() => homeStore.depoimentos)
-
 const { smAndUp } = useDisplay()
+
+const plates = [
+    {
+        nome: 'Yakisoba',
+        src: "https://s2.glbimg.com/sbY-7k1GbROb56FDTqj9XAEzIDQ=/e.glbimg.com/og/ed/f/original/2021/07/22/yakisoba.jpeg"
+    },
+    {
+        nome: 'Lámen',
+        src: "https://static.wixstatic.com/media/9e3cd8_f6fa68d1d2084fa99b54936c033b78e1~mv2.jpg/v1/fill/w_600,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9e3cd8_f6fa68d1d2084fa99b54936c033b78e1~mv2.jpg"
+    },
+    {
+        nome: 'Strogonofe',
+        src: "https://receitinhas.com.br/wp-content/uploads/2016/06/istock-1313903223.webp"
+    },
+    {
+        nome: 'Carne ao Molho Madeira',
+        src: "https://blog.cybercook.com.br/wp-content/uploads/2022/07/molho-madeira-legitimo-para-harmonizar-com-o-vinho-certo-scaled.jpeg"
+    }
+]
 
 const cardLogin = reactive({
     src:"https://images.pexels.com/photos/6127316/pexels-photo-6127316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",

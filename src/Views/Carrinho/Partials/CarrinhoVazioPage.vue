@@ -29,7 +29,7 @@ import { reactive } from "vue";
 
 const globalStore = useGlobalStore()
 const cardImg = reactive({
-    src: 'https://s1.1zoom.me/big0/260/The_second_dishes_Pasta_507866.jpg',
+    src: 'https://i0.wp.com/mercadoeconsumo.com.br/wp-content/uploads/2019/04/Que-comida-saud%C3%A1vel-que-nada-brasileiro-gosta-de-fast-food.jpg?fit=1600%2C1067&ssl=1',
     desc: 'Não perca tempo compre já ou reserve!',
     textButton: 'Visitar o cardápio',
     nextRoute: '/cardapio'
