@@ -4,10 +4,11 @@
             <v-img 
                 src="../../assets/loginImg/foodLogin.png"
             >
+
             <v-col cols="8" offset="2">
                 <v-card class="centered-container" elevation="12">
                         <v-row>
-                            <v-col cols="6" class="cor-1 pa-0">
+                            <v-col cols="6" class="cor-1 pa-2">
 
                                 <v-img 
                                     src="../../assets/loginImg/foodLogin2.png" 
@@ -26,6 +27,16 @@
                                     <span>Food</span><span class="mr-1 ml-1 letter-secondary ">Chain</span><span>Magnate</span>
                                 </v-card-title>
 
+                                <v-col cols="12" class="pa-0">
+                                <v-select
+                                    v-model="cheatMode"
+                                    label="Escolha a permissão"
+                                    placeholder="Caso não queira se cadastrar"
+                                    :items="permission"
+                                    
+                                />
+                                </v-col>
+
                                 <v-col cols="8" offset="2" class="pa-0">
                                     <v-text-field 
                                         label="E-mail" 
@@ -43,7 +54,7 @@
                                 </v-col>
 
                                 <v-col cols="8" offset="2" class="mb-8 mt-4 pa-0">
-                                    <v-btn @click="router.push('/')" block variant="outlined" >
+                                    <v-btn @click="home()" block variant="outlined" >
                                         Entrar
                                     </v-btn>
                                     <span class="letra-esqueceu-senha">Esqueceu senha ?</span>
@@ -63,7 +74,31 @@
 
 <script setup>
 import router from "@/router";
+import { useGlobalStore } from "@/stores/GlobalStore";
 import RegisterPage from "@/Views/Login/Partials/RegisterPage.vue";
+import { onMounted, reactive, ref } from "vue";
+
+const globalStore = useGlobalStore()
+const permission = reactive(['client', 'adm', 'deslogado'])
+let cheatMode = ref('')
+
+function home() {
+    if(cheatMode.value === 'client'){
+        globalStore.isLog = true
+        globalStore.isAdm = false
+    }else if (cheatMode.value === 'adm'){
+        globalStore.isLog = true
+        globalStore.isAdm = true
+    }else if(cheatMode.value === 'deslogado') {
+        globalStore.isLog = false
+        globalStore.isAdm = false
+    }
+    router.push('/')
+}
+
+onMounted(() => {
+    //window.alert('Ainda estou atualizand, logo + com autênticação (restaurante-app github) e consumindo a api (api-restaurante github)')
+})
 
 </script>
 

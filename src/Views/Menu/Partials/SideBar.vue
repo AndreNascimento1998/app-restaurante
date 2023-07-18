@@ -1,5 +1,12 @@
 <template>
-    <v-navigation-drawer v-model="sideMenu"  expand-on-hover elevation="1" rail permanent class="py-2">
+    <v-navigation-drawer 
+        v-model="sideMenu"  
+        expand-on-hover 
+        elevation="1" 
+        rail 
+        permanent 
+        class="py-2"
+    >
         <v-list 
             v-for="(item, index) in globalStore.isAdm ? menuItemsCarte : menuItems" 
             :key="index" 
@@ -46,7 +53,7 @@ const sideMenu = ref(null)
 
 const menuItems = computed(() => { 
     return [
-        { title: 'Início', icon: 'mdi-home', action: () => router.push('/inicio') },
+        { title: 'Início', icon: 'mdi-home', action: () => router.push('/') },
         { title: 'Cardápio', icon: 'mdi-food',  action: () => router.push('/cardapio')},
         { title: 'Promoções', icon: 'mdi-tag', action: ()   => router.push('/cardapio/promocao') },
         { title: 'Carrinho de Compras', icon: 'mdi-cart-check', action: () => router.push('/carrinho') },

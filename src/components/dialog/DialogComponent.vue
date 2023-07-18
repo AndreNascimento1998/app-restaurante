@@ -8,7 +8,7 @@
         <v-card>
             <v-row>
                 <v-col cols="6">
-                    <v-img :src="props.src" style="object-fit: cover; width: 100%; height: 100%;" />
+                    <v-img :src="props.src" style="object-fit: cover;" />
                 </v-col>
                 <v-col cols="6">
                     <v-card-title class="text-h5">

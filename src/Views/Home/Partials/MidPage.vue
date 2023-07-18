@@ -1,5 +1,5 @@
 <template>
-    <v-row class="text-center mt-10">
+    <v-row class="mt-10">
         <v-col cols="12" sm="6">
             <card-img-component 
                 :src="cardLogin.src"

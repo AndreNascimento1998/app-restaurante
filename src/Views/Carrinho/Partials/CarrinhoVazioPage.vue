@@ -1,5 +1,5 @@
 <template>
-    <v-hover v-if="globalStore.isLog" v-slot="{ props }">
+    <v-hover v-slot="{ props }">
         <v-card class="" v-bind="props">
             <v-img
                 src="https://img.freepik.com/fotos-premium/uma-variedade-de-pratos-estao-em-exibicao-no-restaurante_900775-11515.jpg?w=2000">
@@ -23,11 +23,9 @@
 </template>
 
 <script setup>
-import { useGlobalStore } from "@/stores/GlobalStore";
 import CardImgComponent from "@/components/card/CardImgComponent.vue"
 import { reactive } from "vue";
 
-const globalStore = useGlobalStore()
 const cardImg = reactive({
     src: 'https://i0.wp.com/mercadoeconsumo.com.br/wp-content/uploads/2019/04/Que-comida-saud%C3%A1vel-que-nada-brasileiro-gosta-de-fast-food.jpg?fit=1600%2C1067&ssl=1',
     desc: 'Não perca tempo compre já ou reserve!',
@@ -69,7 +67,7 @@ const cardImg = reactive({
 }
 
 .color-fund {
-    background-color: rgba(153, 158, 153, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     border-style: inset;
 }
 </style>
