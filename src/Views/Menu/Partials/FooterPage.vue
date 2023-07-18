@@ -7,11 +7,12 @@
             <v-spacer />
 
             <v-btn 
-                v-for="icon in icons" 
-                :key="icon"
+                v-for="icon in socials"
+                @click="icon.action"
+                :key="icon.icon"
                 :class="{'mx-0': !smAndUp, 'mx-4': smAndUp}" 
                 class="icon" 
-                :icon="icon" 
+                :icon="icon.icon" 
                 variant="plain" 
                 size="small" 
             />
@@ -55,11 +56,10 @@ import { useDisplay } from "vuetify/lib/framework.mjs"
 
 const { smAndUp } = useDisplay()
 
-const icons = [
-    'mdi-facebook',
-    'mdi-twitter',
-    'mdi-linkedin',
-    'mdi-instagram',
+const socials = [
+    {icon: 'mdi-github', action: () => window.open('https://github.com/AndreNascimento1998')},
+    {icon: 'mdi-linkedin', action: () => window.open('https://www.linkedin.com/in/andre-ncardoso/')},
+    {icon: 'mdi-instagram', action: () => window.open('https://www.instagram.com/stef_and01/')},
 ]
 
 </script>
