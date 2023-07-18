@@ -7,7 +7,10 @@ O sistema ainda não está finalizado. Haverá duas permissões: o administrador
 
 ## Descrição
 ```
-Vue 3
+VueJS 3
+JavaScript
+HTML
+CSS
 Vuetify
 es-Lint
 Axios
