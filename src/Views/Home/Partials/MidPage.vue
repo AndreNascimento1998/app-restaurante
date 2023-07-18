@@ -8,9 +8,8 @@
                 :nextRoute="cardLogin.nextRoute"
             />
         </v-col>
-        <v-col cols="6">
+        <v-col cols="12" sm="6">
             <card-img-component
-                v-show="smAndUp"
                 :src="cardCardapio.src"
                 :desc="cardCardapio.desc"
                 :textButton="cardCardapio.textButton"
@@ -25,23 +24,23 @@
         <v-col cols="12">
             <h2 style="font-style: italic;">Lançamentos</h2>
         </v-col>
-        <v-col v-for="(prato, index) in plate" :key="index" cols="3">
+        <v-col v-for="(prato, index) in plate" :key="index" cols="6" sm="3">
 
             <v-hover v-slot="{ isHovering, props }">
                 <v-card class="mx-auto rounded-pill" v-bind="props">
 
-                    <v-img :width="300" aspect-ratio="16/9" cover :src="prato.src">
+                    <v-img width="100%" aspect-ratio="16/9" cover :src="prato.src">
 
                         <v-expand-transition>
                             <div v-if="isHovering"
                                 class="d-flex transition-fast-in-fast-out bg-color v-card--reveal"
                                 style="height:100%;">
                                 <v-row>
-                                    <v-col offset="4" cols="12">
+                                    <v-col v-show="smAndUp" offset="2" cols="12" offset-md="4">
                                         <p class="letter">Ver mais</p>
 
                                     </v-col>
-                                    <v-col cols="6" offset="5">
+                                    <v-col cols="6" offset="3" offset-sm="4" offset-md="5">
                                         <v-icon class="pointer" @click="paginaCardapio(prato)" size="40px">mdi-plus-circle-outline</v-icon>
                                     </v-col>
                                 </v-row>
@@ -53,12 +52,12 @@
         </v-col>
     </v-row>
 
-    <v-row class="mt-6 pa-4">
+    <v-row v-show="smAndUp" class="mt-6 pa-4">
         <v-col cols="12">
             <h2 style="font-style: italic;">Depoimentos</h2>
         </v-col>
 
-        <v-col v-for="(item, index) in testimony" :key="index"  cols="3">
+        <v-col v-show="smAndUp" v-for="(item, index) in testimony" :key="index"  cols="3">
         <v-card class="d-flex flex-column align-center justify-center">
                 <v-avatar class="pa-1" size="100">
                     <img :src="item.url"
@@ -71,8 +70,11 @@
                     {{ item.nome }}
                 </v-card-title>
                 <v-card-text>
-                    <p>
-                      {{ item.descricao }}
+                    <p v-if="item.descricao.length > 80">
+                      {{ item.descricao.slice(0,75) }}...
+                    </p>
+                    <p v-else>
+                        {{ item.descricao }}
                     </p>
                 </v-card-text>
             </v-card>

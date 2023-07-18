@@ -1,6 +1,6 @@
 <template>
     <v-app-bar elevation="1" class="pa-1" height="52">
-        <v-col cols="1" class="ml-10">
+        <v-col cols="" sm="1" :class="{'ml-10': smAndUp}">
             <v-toolbar-title class="justify-left">
                 <v-img src="https://static.vecteezy.com/system/resources/previews/014/971/638/non_2x/food-logo-design-template-restaurant-free-png.png" height="90"/>
             </v-toolbar-title>
@@ -33,9 +33,10 @@
 import router from "@/router";
 import { useCarrinhoCompras } from "@/stores/CarrinhoCompras";
 import {  computed, ref } from "vue";
+import { useDisplay } from "vuetify/lib/framework.mjs";
 
 const kartShopStore = useCarrinhoCompras()
-
+const { smAndUp } = useDisplay()
 const priceCart = computed(() => kartShopStore.precoStore)
 const itemsQuantity = computed(() => kartShopStore.itensQnt)
 

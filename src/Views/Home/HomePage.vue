@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <v-carousel interval="6000" cycle height="400px" show-arrows="hover">
+        <v-carousel interval="6000" cycle height="400" show-arrows="hover">
             <v-carousel-item 
                 v-for="(item, key) in items" 
                 :key="key" @click="urlItemCarousel(item)" 
@@ -53,6 +53,7 @@ function urlItemCarousel(item) {
 </script>
 
 <style>
+
 .click{
     cursor: pointer !important;
 }
