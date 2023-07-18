@@ -1,9 +1,9 @@
 # Restaurante Food Chain Magnate
 
 ### Observação
-```
+
 O sistema ainda não está finalizado. Haverá duas permissões: o administrador terá uma tela com um v-data-table onde poderá cadastrar, remover e modificar o cardápio e as promoções. Já o cliente, se não estiver logado, será redirecionado para a página de login ao clicar em "ver os itens". Após o cadastro, ele poderá comprar os itens na loja normalmente.
-```
+
 
 ## Descrição
 ```
