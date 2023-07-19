@@ -6,7 +6,6 @@
                 <v-expand-transition>
                     <div class="d-flex transition-fast-in-fast-out color-fund v-card--reveal" style="height:100%;">
                         <v-row>
-                           
                             <v-col 
                             offset="1"
                             cols="5" 
@@ -26,14 +25,21 @@
                             cols="5" 
                             class="color mt-4"
                             >
-                                <card-img-component 
+                                <card-img-component
                                 :src="cardRestaurant.src" 
                                 :desc="cardRestaurant.desc" 
                                 :textButton="cardRestaurant.textButton"
                                 :nextRoute="cardRestaurant.nextRoute" 
                                 />
                             </v-col>
-                            
+
+                            <v-col cols="10" offset="1" class="pa-2 mb-4">
+                                <carousel-component 
+                                    :items="items"
+                                    :height="280"
+                                    :heightPhone="100"
+                                />          
+                            </v-col>
                         </v-row>
                     </div>
                 </v-expand-transition>
@@ -44,12 +50,17 @@
 
 <script setup>
 import CardImgComponent from "@/components/card/CardImgComponent.vue"
-import { reactive } from "vue";
+import CarouselComponent from '@/components/carousel/CarouselComponent.vue'
+import { reactive, ref } from "vue";
+import car1 from '@/assets/carouselCartEmpty/car-1.jpg'
+import car2 from '@/assets/carouselCartEmpty/car-2.jpg'
+import car3 from '@/assets/carouselCartEmpty/car-3.jpg'
+import car4 from '@/assets/carouselCartEmpty/car-4.jpg'
 
 const cardImg = reactive(
     {
-        src: 'https://i0.wp.com/mercadoeconsumo.com.br/wp-content/uploads/2019/04/Que-comida-saud%C3%A1vel-que-nada-brasileiro-gosta-de-fast-food.jpg?fit=1600%2C1067&ssl=1',
-        desc: 'Seu carrinho está vazio! Não perca tempo compre já ou reserve!',
+        src: 'https://www.pngkit.com/png/detail/411-4110678_carrinho-de-compras-vazio-shopping-cart.png',
+        desc: 'Seu carrinho está vazio! Não perca tempo comece já as  compre!',
         textButton: 'Visitar o cardápio',
         nextRoute: '/cardapio'
     }, 
@@ -64,6 +75,24 @@ const cardRestaurant = reactive(
     }, 
 )
 
+const items = ref([
+    {
+        src: car1,
+        url: 'https://pictogrammers.com/library/mdi/'
+    },
+    {
+        src: car2,
+        url: 'https://cocobambu.com/'
+    },
+    {
+        src: car3,
+        url: 'https://pictogrammers.com/library/mdi/'
+    },
+    {
+        src: car4,
+        url: 'https://pictogrammers.com/library/mdi/'
+    },
+])
 
 </script>
 

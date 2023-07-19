@@ -1,14 +1,11 @@
 <template>
     <v-container fluid>
-        <v-carousel interval="6000" cycle :class="{'heigthLess': !smAndUp, 'heigth': smAndUp}" show-arrows="hover">
-            <v-carousel-item 
-                v-for="(item, key) in items" 
-                :key="key" @click="urlItemCarousel(item)" 
-                :src="item.src" 
-                cover 
-                class="click"
-            />
-        </v-carousel>
+
+        <carousel-component 
+            :items="items"
+            :height="400"
+            :heightPhone="150"
+        />
         <v-divider />
         <mid-page />
     </v-container>
@@ -17,9 +14,8 @@
 <script setup>
 import midPage from './Partials/MidPage.vue'
 import { onMounted, ref } from 'vue';
-import { useDisplay } from 'vuetify/lib/framework.mjs';
+import CarouselComponent from '@/components/carousel/CarouselComponent.vue'
 
-const { smAndUp } = useDisplay()
 const items = ref([
     {
         src: 'https://cocobambu.com/wp-content/uploads/2022/06/CB_BR_INSTI_224_22_BANNERS_SITE_COCO_BAMBU_PRINCIPAL_1500x600.png',
@@ -47,11 +43,6 @@ onMounted(() => {
     window.scrollTo(0, 0)
 })
 
-function urlItemCarousel(item) {
-    if(item.url){
-        window.open(item.url)
-    }
-}
 </script>
 
 <style>
