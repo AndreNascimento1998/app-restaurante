@@ -36,6 +36,7 @@ import { useGlobalStore } from "@/stores/GlobalStore";
 import {  computed, ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 
+const cartShopStore = useCarrinhoCompras()
 const globalStore = useGlobalStore()
 const kartShopStore = useCarrinhoCompras()
 const { smAndUp } = useDisplay()
@@ -62,9 +63,18 @@ const options = ref([
     {
         text: 'Sair', 
         icon: 'mdi-logout',
-        action: () => alert('Oi') 
+        action: () => loggout()
     },
 ])
+
+function loggout() {
+    globalStore.isLog = false
+    globalStore.isAdm = false
+    cartShopStore.itensQnt = 0
+    cartShopStore.precoStore = 0
+    cartShopStore.carrinhoDeCompras.slice(0)
+    router.push('/login')
+}
 
 </script>
 
